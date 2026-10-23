@@ -2,6 +2,7 @@
 %                 Define EM Vars/Constants and Domain Parameters
 % -------------------------------------------------------------------------
 
+trace_call('pre_output_file');
 pre_define_structure_params
 dx = Res;
 

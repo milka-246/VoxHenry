@@ -2,6 +2,7 @@ function [nodeid_lft, nodeid_rght, nodeid_wlcond] = lse_find_port_nodes_from_pos
 % Finding the nodes on which excitation and ground points are defined,
 % based on the physical location in space of the port nodes
 
+trace_call('lse_find_port_nodes_from_positions');
 fl_profile = 0;
 
 % Inputs for visualization

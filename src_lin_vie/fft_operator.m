@@ -1,5 +1,6 @@
 function [fA] = fft_operator(A)
 % 
+trace_call('fft_operator');
 [L,M,N,d] = size(A);
 fA = zeros(L,M,N,d);
 % 3D-FFT of A

@@ -1,6 +1,7 @@
 % Octave work-around for 'fcnchk' MatLab function
 % Reference: http://octave.1599824.n4.nabble.com/rootfinding-newtzero-td4631423.html
 function [f,msg]=fcnchk_octave(x, n)
+    trace_call('fcnchk_octave');
     f = x;
     % 'msg' contains any error message from fcnchk
     % so if 'x' is actually a matrix, let's put it in a message

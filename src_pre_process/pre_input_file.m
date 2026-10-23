@@ -1,5 +1,6 @@
 function [sigma_e, lambdaL, freq, dx, num_ports, pnt_lft, pnt_rght, pnt_well_cond] = pre_input_file(fileinname)
 
+trace_call('pre_input_file');
 tini = tic;
 
 % constants

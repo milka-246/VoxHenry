@@ -1,5 +1,6 @@
 function [pnt_found,pnt_id,side] = lse_find_nodeid(all_panel_locs,all_panels_ids,pnt_coor,num_nonair_cube,tola,fl_vis_exc_grnd,dum)
 
+trace_call('lse_find_nodeid');
 pnt_found = 0;
 pnt_id = 0;
 side = 0;

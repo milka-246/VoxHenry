@@ -8,6 +8,7 @@ function [I1_co, I2_co, I3_co, I4_co] = surface_surface_coeff(dx,k0)
 %% calculates the constant coefficients infront of 4 surface-surface integral kernels
 
 % normal vector components of each face of the cube
+trace_call('surface_surface_coeff');
 nx = [-1 1  0 0  0 0];
 ny = [ 0 0 -1 1  0 0];
 nz = [ 0 0  0 0 -1 1];

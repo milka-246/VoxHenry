@@ -1,3 +1,4 @@
+trace_call('pre_print_out_inputs_generate_consts');
 disp('Inputs for simulation :::')
 % take as reference 'se' the maximum conductivity of any conductor
 se = max(max(max(sigma_e)));

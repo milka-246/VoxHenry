@@ -20,6 +20,9 @@ disp('------------------------------------------------------------------')
 
 pre_define_the_path_for_folders
 
+% start recording the names of the called functions (saved at the end of the run)
+trace_call('-reset');
+
 % -------------------------------------------------------------------------
 %                  Simulation Parameters
 % -------------------------------------------------------------------------
@@ -48,6 +51,18 @@ fl_precon_type = 'schur_invert';
 plot_currents_post_proc = 1; % if 1, plot the current densities in 3D
 plot_option=1; % see the options of plotting in Visualization part
 freq_curr_plot=2.5e9; % frequency for plotting currents
+
+% Octave: 3D current plots need the 'qt' graphics toolkit
+% (gnuplot cannot draw them). If qt is not available (e.g. octave-cli),
+% skip plotting instead of crashing at the very end of the simulation.
+if (exist('OCTAVE_VERSION', 'builtin') > 0 && plot_currents_post_proc == 1)
+    if any(strcmp(available_graphics_toolkits(), 'qt'))
+        graphics_toolkit('qt');
+    else
+        disp('Warning: Octave qt graphics toolkit not available, current plotting disabled');
+        plot_currents_post_proc = 0;
+    end
+end
 
 
 % -------------------------------------------------------------------------
@@ -187,7 +202,7 @@ if (strcmp(fl_precon_type, 'schur_invert_original') == 0)
     % length of rhs_vect is reduced of ('Ae' rows - 'Ar' rows) elements, where Ar is Ae without the rows 
     % corresponding to the ground or excitation nodes (anyway after the first size(Ae,2) elements
     % corresponding to the input port voltages, the 'rhs_vect' is all zeros)
-    rhs_vect = rhs_vect(1:size(rhs_vect)-size(nodeid_4_grnd,1)-size(nodeid_4_injectcurr,1), :);
+    rhs_vect = rhs_vect(1:size(rhs_vect,1)-size(nodeid_4_grnd,1)-size(nodeid_4_injectcurr,1), :);
     % now remove the empty Ae rows. This should actually be 'Ar' as per VoxHenry paper
     Ae = Ae(any(Ae,2),:);
 end
@@ -437,3 +452,10 @@ if(plot_currents_post_proc == 1)
     disp('-----------------------------------------------------')
 
 end
+
+% -------------------------------------------------------------------------
+%                  Save the list of called functions
+% -------------------------------------------------------------------------
+
+disp(['Saving list of called functions'])
+trace_call('-save', ['Results', filesep, fileinname, '-', 'call_trace.txt']);

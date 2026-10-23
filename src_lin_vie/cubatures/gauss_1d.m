@@ -63,6 +63,7 @@ function [ weight , xtab ] = gauss_1d ( order )
 %    Output, real WEIGHT(ORDER), the weights of the rule.
 %    The weights are positive, symmetric and should sum to 2.
 %
+  trace_call('gauss_1d');
   if ( order == 1 )
 
     xtab(1) =   0.0;

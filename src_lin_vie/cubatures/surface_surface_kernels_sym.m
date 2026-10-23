@@ -9,6 +9,7 @@ function K = surface_surface_kernels_sym(I1_co,I2_co,I3_co,I4_co,W,A,B,C,D,Np,k0
 
 % 3 unique kernels
 %
+trace_call('surface_surface_kernels_sym');
 if(dir == 1)
     % along x, we are just interested in:
     % - pulse-pulse'          ->   I_SK(1)

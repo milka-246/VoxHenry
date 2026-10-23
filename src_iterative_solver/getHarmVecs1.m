@@ -14,6 +14,7 @@
 function harmVecs = getHarmVecs1(m,k,H)
 
 % Build matrix for eigenvalue problem.
+trace_call('getHarmVecs1');
 harmRitzMat = H(1:m,:)' \ eye(m);
 harmRitzMat(1:m,1:m-1) = 0;
 harmRitzMat = H(1:m,:) + H(m+1,m)^2 * harmRitzMat;

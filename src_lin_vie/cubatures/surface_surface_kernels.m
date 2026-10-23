@@ -9,6 +9,7 @@ function I_S = surface_surface_kernels(I1_co,I2_co,I3_co,I4_co,W,A,B,C,D,Np,k0,r
 
 
 % 4D integral jacobian
+trace_call('surface_surface_kernels');
 J = (dx/2)^4;
 
 % normal vector components

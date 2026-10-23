@@ -1,5 +1,6 @@
 function [all_panels_ids, num_nodes] = lse_generate_panelIDs(idxS, L, M, N)
 
+trace_call('lse_generate_panelIDs');
 fl_profile = 0;
 
 % constants

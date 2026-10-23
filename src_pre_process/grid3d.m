@@ -32,6 +32,7 @@ function r = grid3d(x, y, z)
 % Initialization of variables
 % -------------------------------------------------------------------------
 
+trace_call('grid3d');
 if nargin == 1
     y = x;
     z = x;

@@ -4,6 +4,7 @@ function [Zmat_large] = lse_generate_Zmat(fN_all, L, M, N)
 % 'fN_all' must be the FFT of the circulant 
 % WARNING: Z matrix can be HUGE!
 
+trace_call('lse_generate_Zmat');
 disp('Zmat_large matrix will be generated! ')
 tic   
  

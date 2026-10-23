@@ -11,6 +11,7 @@ function f = coefficients(n,np,l,k0,dx,ker_type)
 % 1,2,3 of the report
 
 
+trace_call('coefficients');
 switch ker_type
     
     case 1

@@ -1,4 +1,5 @@
 function lse_sparse_precon_prepare(dx,z_real,z_imag,idxS,st_sparse_precon,nodeid_4_grnd,nodeid_4_injectcurr,Ae)
+trace_call('lse_sparse_precon_prepare');
 global A_inv LL UU PP QQ RR Sch_sparse slct_decomp_sch fl_cholmod A_noninv W fPSchur precond
 global fl_precon_type
 

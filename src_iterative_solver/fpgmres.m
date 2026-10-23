@@ -58,6 +58,7 @@
 function [x,flag,relres,iter,resvec] = fpgmres(A,b,restart,tol,maxit,R1,R2,x0)
 
 % Initialize variables.
+trace_call('fpgmres');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
    return

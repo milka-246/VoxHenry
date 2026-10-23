@@ -1,5 +1,6 @@
 function [currs_port_yparams2] = lse_compute_Y_mat_column_alternative(num_ports,Ae,Ae_only_leaving,Ae_only_entering_bndry,x,nodeid_lft,currs_port_yparams)
 
+trace_call('lse_compute_Y_mat_column_alternative');
 num_node = size(Ae,1); num_curr = size(Ae,2);
 x_inner_node=Ae_only_leaving*x(1:num_curr);
 x_bndry_node=Ae_only_entering_bndry*x(1:num_curr);

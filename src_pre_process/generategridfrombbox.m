@@ -34,6 +34,7 @@ function [r] = generategridfrombbox(res,x,y,z,fl_plot_boxes_w_grid)
 % Initialization of variables
 % -------------------------------------------------------------------------
 
+trace_call('generategridfrombbox');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
    return

@@ -12,6 +12,7 @@ function [adjacency_type,ordered_points] = points_mappping(m,dx)
     % VAo -> vertex adjacent orthogonal
     % VAc -> vertex adjacent coplanar
     % 0.0 -> non-singular integral
+    trace_call('points_mappping');
     ST  = 1;
     EAo = 2;
     EAc = 2;

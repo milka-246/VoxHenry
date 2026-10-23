@@ -14,6 +14,7 @@
 % OUTPUT: HARMVECS basis for span of K harmonic Ritz vectors
 function harmVecs = getHarmVecs2(m,k,H2,V,U,C)
 
+trace_call('getHarmVecs2');
 B = H2' * H2;
 
 % A = | C'*U        0 |

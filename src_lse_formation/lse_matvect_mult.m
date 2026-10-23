@@ -1,4 +1,5 @@
 function [JOut_full]=lse_matvect_mult(JIn0, fN_all, Ae, z_real, z_imag, dx, idx, nodeid_4_grnd, nodeid_4_injectcurr)
+trace_call('lse_matvect_mult');
 global fl_precon_type
 
 % -------------------------------------------------------------------------

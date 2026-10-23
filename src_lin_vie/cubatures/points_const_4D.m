@@ -7,6 +7,7 @@ function [X,Y,Z,Xp,Yp,Zp] = points_const_4D(A,B,C,D,r_m,r_n,dx,n,np)
 % r_n: centre of the primed square
 % A,B,C,D: 4D Clenshaw - Curtis or Gauss-Legendre points
 
+trace_call('points_const_4D');
 plane   = find(n ~=0);
 plane_p = find(np~=0);
 N = length(A);

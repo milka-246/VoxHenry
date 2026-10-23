@@ -13,6 +13,7 @@ function [fN_all,st_sparse_precon] = lse_generate_circulant_tensor(dx,ko,L,M,N,f
 % if 'lse_enhanced_near' == 1, unroll the for loops to improve
 %     parallelization for near interactions calculation
 % if 'lse_enhanced_near' == 0, use the original brute force way to compute G_mn terms
+trace_call('lse_generate_circulant_tensor');
 lse_enhanced_near = 3;
 % if 'lse_exploit_symmetry' == 0, use the original brute force way to compute G_mn terms
 % if 'lse_exploit_symmetry' == 1, exploit symmetry when calculating G_mn terms

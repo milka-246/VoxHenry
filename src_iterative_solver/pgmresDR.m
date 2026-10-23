@@ -73,6 +73,7 @@
 function [x,flag,relres,iter,resvec] = pgmresDR(A,b,restart,tol,maxit,ritz,L1,L2,R1,R2,x0)
 
 % Initialize variables.
+trace_call('pgmresDR');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
    return

@@ -34,6 +34,7 @@ function [figidx,fighandle] = plot_3Dvector(vec,r,xcut,ycut,zcut,figidx,scale,na
 % Prepare data
 % -------------------------------------------------------------------------
 
+trace_call('plot_3Dvector');
 if (nargin < 6) || isempty(figidx)
     figidx = 0;
 end

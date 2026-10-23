@@ -23,6 +23,7 @@ function I_VA = singular_VA(volume_ker,l,k0,dx,Np,ker_type,np,nq,r1,r2,r3,r4,r5,
 % rp_c = [dx/2, 3*dx/2, 0.];
 
 % centre of squares
+trace_call('singular_VA');
 rq_c = (r1 + r3)/2;
 rp_c = (r3 + r6)/2;
 

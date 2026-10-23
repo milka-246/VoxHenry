@@ -1,6 +1,7 @@
 function plot_curr_coefs_on_grid(slct_plane,slct_cut,r,Jx_currs_grid,Jy_currs_grid,Jz_currs_grid,J2d_currs_grid,J3d_currs_grid,cmin,cmax)
 
 
+trace_call('plot_curr_coefs_on_grid');
 fl_ind_or_phys_len=1; % if 1 axes are physical length, otherwise index along that dimension
 fl_clbar_to_maxmin=0; % if 1 colorbar limits are set to max and min currents in [Jx,Jy,Jz] 
 fl_diag_currs=1;

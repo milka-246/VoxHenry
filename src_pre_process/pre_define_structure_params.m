@@ -1,4 +1,5 @@
 % Domain and unknown parameters
+trace_call('pre_define_structure_params');
 [L,M,N,~] = size(sigma_e); % domain size
 nD = L*M*N; % number of variables in the system
 % the voxels with non-zero conductivity

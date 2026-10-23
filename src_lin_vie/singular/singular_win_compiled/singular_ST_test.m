@@ -3,6 +3,7 @@ function I_ST = singular_ST_test(volume_ker,l,k0,dx,Np,ker_type,np,nq,r1,r2,r3,r
 % function is called with l-1 due to the difference in indexing between
 % matlab and C++.
 
+ trace_call('singular_ST_test');
  k0 = 0.2*pi;
  Np = 5;
  dx = 1.0;

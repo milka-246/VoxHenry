@@ -1,5 +1,6 @@
 function plot_boxes_of_grid(r,res)
 
+trace_call('plot_boxes_of_grid');
 fl_plot_w_voxel_cens = 0;
 
 figure

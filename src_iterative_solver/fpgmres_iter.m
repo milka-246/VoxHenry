@@ -25,6 +25,7 @@
 
 function [x,r,k,resvec] = fpgmres_iter(A,x,r,m,R1,R2,tol)
 
+trace_call('fpgmres_iter');
 if(isempty(R1))
    existR1 = 0;
 else

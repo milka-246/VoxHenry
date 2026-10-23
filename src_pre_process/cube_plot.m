@@ -26,6 +26,7 @@ function cube_plot(origin,X,Y,Z,color)
 % ------------------------------Code Starts Here------------------------------ %
 % Define the vertexes of the unit cubic
  
+trace_call('cube_plot');
 ver = [1 1 0;
     0 1 0;
     0 1 1;

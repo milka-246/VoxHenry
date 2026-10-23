@@ -5,6 +5,7 @@ function  I = volume_volume(W,X,Y,Z,Xp,Yp,Zp,k0,r_m,r_n,dx,volume_ker)
 %% change of variables
 
 % Jacobian
+trace_call('volume_volume');
 J = (dx/2)^6;
 
 % sampling points for the Green kernel after change of variable

@@ -1,5 +1,6 @@
 function [Ae, Ae_only_leaving, Ae_only_entering_bndry] = lse_compute_Ae_matrix(idxS, all_panels_ids, num_nodes)
 
+trace_call('lse_compute_Ae_matrix');
 tstart = tic;
 fl_profile = 0;
 

@@ -3,6 +3,7 @@ function [Gp] = gperiodic_coeff_nop_linJVIE(cube)
 % The following is currently being updated due to the signs of 
 % new basis functions
 % L,M,N
+trace_call('gperiodic_coeff_nop_linJVIE');
 if     strcmp(cube, 'L')
     
     Gp   = [ +1.0 -1.0 +1.0 +1.0 +1.0 +1.0 +1.0];

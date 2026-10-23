@@ -9,6 +9,7 @@ function  K = volume_volume_sym(W,X,Y,Z,Xp,Yp,Zp,k0,r_m,r_n,dx,volume_ker,dir)
 %% change of variables
 
 % Jacobean
+trace_call('volume_volume_sym');
 J = (dx/2)^6;
 
 % sampling points for the Green kernel

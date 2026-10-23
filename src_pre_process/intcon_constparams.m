@@ -34,6 +34,7 @@ function [idx,epsilon_r,sigma_e,lambdaL,grid_intcon] = intcon_constparams(r,Res,
 % Initialization of variables
 % -------------------------------------------------------------------------
 
+trace_call('intcon_constparams');
 if(nargin < 4 )
     fprintf(1, '\n ERROR: not enough arguments\n');
     return

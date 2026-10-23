@@ -1,5 +1,6 @@
 function [Jx_currs_grid,Jy_currs_grid,Jz_currs_grid,J2d_currs_grid,J3d_currs_grid,cmin,cmax]=post_obtain_curr_coefs_on_grid(x,Mc)
 
+trace_call('post_obtain_curr_coefs_on_grid');
 [L,M,N] = size(Mc); % domain size
 
 tola=1e-12;
