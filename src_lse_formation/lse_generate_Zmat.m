@@ -5,6 +5,7 @@ function [Zmat_large] = lse_generate_Zmat(fN_all, L, M, N)
 % WARNING: Z matrix can be HUGE!
 
 trace_call('lse_generate_Zmat');
+trace_io('in', 'lse_generate_Zmat');
 disp('Zmat_large matrix will be generated! ')
 tic   
  
@@ -84,3 +85,4 @@ clear Zmat
 
 disp(['Time for computing Zmat_large ::: ',num2str(toc)])
     
+trace_io('out', 'lse_generate_Zmat');

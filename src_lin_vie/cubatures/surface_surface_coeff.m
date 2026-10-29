@@ -9,6 +9,7 @@ function [I1_co, I2_co, I3_co, I4_co] = surface_surface_coeff(dx,k0)
 
 % normal vector components of each face of the cube
 trace_call('surface_surface_coeff');
+trace_io('in', 'surface_surface_coeff');
 nx = [-1 1  0 0  0 0];
 ny = [ 0 0 -1 1  0 0];
 nz = [ 0 0  0 0 -1 1];
@@ -64,4 +65,5 @@ end
 
 
 
+trace_io('out', 'surface_surface_coeff');
 end

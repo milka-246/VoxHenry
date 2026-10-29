@@ -33,6 +33,7 @@ function r = grid3d(x, y, z)
 % -------------------------------------------------------------------------
 
 trace_call('grid3d');
+trace_io('in', 'grid3d');
 if nargin == 1
     y = x;
     z = x;
@@ -60,3 +61,4 @@ for ix = 1:L
         end
     end
 end
+trace_io('out', 'grid3d');

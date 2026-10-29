@@ -1,0 +1,39 @@
+* VoxHenry input file
+* Model type: copper cube 2x2x2 voxels (2e-006 m side), smallest test
+
+* Frequency points (Hz)
+freq= 1e+010
+
+* Voxel size (m)
+dx=1e-006
+
+* Voxel grid dimension in voxel units; x, y, z
+LMN=2,2,2
+
+* Voxel list
+* Format is:
+* V <index_x> <index_y> <index_z> <conductivity S/m>
+*
+StartVoxelList
+V 1 1 1 5.8e+007
+V 2 1 1 5.8e+007
+V 1 2 1 5.8e+007
+V 2 2 1 5.8e+007
+V 1 1 2 5.8e+007
+V 2 1 2 5.8e+007
+V 1 2 2 5.8e+007
+V 2 2 2 5.8e+007
+EndVoxelList
+
+* Port nodes list
+* Format is:
+* N <portname> <excitation or ground (P/N)> <voxel_index_x> <voxel_index_y> <voxel_index_z> <node (+z,-z,+x,-x,+y,-y)>
+*
+N port1 P 2 1 1 +x
+N port1 P 2 2 1 +x
+N port1 P 2 1 2 +x
+N port1 P 2 2 2 +x
+N port1 N 1 1 1 -x
+N port1 N 1 2 1 -x
+N port1 N 1 1 2 -x
+N port1 N 1 2 2 -x

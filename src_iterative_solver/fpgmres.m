@@ -59,9 +59,10 @@ function [x,flag,relres,iter,resvec] = fpgmres(A,b,restart,tol,maxit,R1,R2,x0)
 
 % Initialize variables.
 trace_call('fpgmres');
+trace_io('in', 'fpgmres');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
-   return
+   trace_io('out', 'fpgmres'); return
 end
 if(nargin < 3 || isempty(restart))
    restart = 50;
@@ -154,3 +155,4 @@ disp(['Achieved minimum residual norm NORM(B-A*X) ::: ',num2str(min(resvec))])
 
 
 
+trace_io('out', 'fpgmres');

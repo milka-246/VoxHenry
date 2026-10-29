@@ -6,6 +6,7 @@ function  I = volume_volume(W,X,Y,Z,Xp,Yp,Zp,k0,r_m,r_n,dx,volume_ker)
 
 % Jacobian
 trace_call('volume_volume');
+trace_io('in', 'volume_volume');
 J = (dx/2)^6;
 
 % sampling points for the Green kernel after change of variable
@@ -115,4 +116,5 @@ I(6) =  K(8) - K(9);
 % G3D,3D
 I(7)=  K(8) + K(9) + 4*K(10);
 
+trace_io('out', 'volume_volume');
 end

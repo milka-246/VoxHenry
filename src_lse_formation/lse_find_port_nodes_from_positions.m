@@ -3,6 +3,7 @@ function [nodeid_lft, nodeid_rght, nodeid_wlcond] = lse_find_port_nodes_from_pos
 % based on the physical location in space of the port nodes
 
 trace_call('lse_find_port_nodes_from_positions');
+trace_io('in', 'lse_find_port_nodes_from_positions');
 fl_profile = 0;
 
 % Inputs for visualization
@@ -316,3 +317,4 @@ disp('Done... Finding the IDs of port nodes... ')
 disp('-----------------------------------------------------')
 
 
+trace_io('out', 'lse_find_port_nodes_from_positions');

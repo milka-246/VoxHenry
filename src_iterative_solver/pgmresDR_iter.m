@@ -23,6 +23,7 @@
 function [V,H,B,k,resvec] = pgmresDR_iter(A,r,m,L1,L2,R1,R2,C,tol)
 
 trace_call('pgmresDR_iter');
+trace_io('in', 'pgmresDR_iter');
 if(isempty(L1))
    existL1 = 0;
 else
@@ -135,9 +136,10 @@ for k = 1:m
        B = B(:,1:k);
        resvec = resvec(1:k);
        
-       return
+       trace_io('out', 'pgmresDR_iter'); return
        
    end
    
 end
 
+trace_io('out', 'pgmresDR_iter');

@@ -1,6 +1,7 @@
 function I_VA = singular_VA_test(volume_ker,l,k0,dx,Np,ker_type,np,nq,r1,r2,r3,r4,r5,r6,r7)
 
  trace_call('singular_VA_test');
+ trace_io('in', 'singular_VA_test');
  k0 = 0.2*pi;
  Np = 5;
  dx = 1.0;
@@ -35,4 +36,5 @@ for volume_ker = 2:3
   end
 end
 
+ trace_io('out', 'singular_VA_test');
 end

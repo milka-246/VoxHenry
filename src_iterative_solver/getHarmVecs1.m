@@ -15,6 +15,7 @@ function harmVecs = getHarmVecs1(m,k,H)
 
 % Build matrix for eigenvalue problem.
 trace_call('getHarmVecs1');
+trace_io('in', 'getHarmVecs1');
 harmRitzMat = H(1:m,:)' \ eye(m);
 harmRitzMat(1:m,1:m-1) = 0;
 harmRitzMat = H(1:m,:) + H(m+1,m)^2 * harmRitzMat;
@@ -28,3 +29,4 @@ hv = sortrows(hv);
 
 % Select k smallest
 harmVecs = hv(1:k,2:m+1)';
+trace_io('out', 'getHarmVecs1');

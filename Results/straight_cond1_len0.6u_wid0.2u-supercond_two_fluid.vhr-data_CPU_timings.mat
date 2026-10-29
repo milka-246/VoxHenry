@@ -1,0 +1,33 @@
+# Created by Octave 9.4.0, Sat Oct 24 22:37:48 2026 MSK <milka@milka-OMEN-by-HP-Laptop-16-c0xxx>
+# name: num_freq
+# type: scalar
+3
+
+
+# name: num_ports
+# type: scalar
+1
+
+
+# name: sim_CPU_pre
+# type: matrix
+# rows: 1
+# columns: 2
+ 2.0760540962219238 3.7536559104919434
+
+
+# name: sim_CPU_lse
+# type: matrix
+# ndims: 3
+ 3 1 3
+ 0.012085914611816406
+ 0.0054109096527099609
+ 0.0054149627685546875
+ 1.781702995300293
+ 1.7549669742584229
+ 1.8065438270568848
+ 1.665125846862793
+ 1.2112441062927246
+ 1.1944229602813721
+
+

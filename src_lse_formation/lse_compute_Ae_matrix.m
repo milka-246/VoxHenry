@@ -1,6 +1,7 @@
 function [Ae, Ae_only_leaving, Ae_only_entering_bndry] = lse_compute_Ae_matrix(idxS, all_panels_ids, num_nodes)
 
 trace_call('lse_compute_Ae_matrix');
+trace_io('in', 'lse_compute_Ae_matrix');
 tstart = tic;
 fl_profile = 0;
 
@@ -128,3 +129,4 @@ disp(['Number of potential unknowns ::: ',num2str(num_node)])
 disp(['Number of total unknowns ::: ',num2str(num_curr+num_node)])
 disp('-----------------------------------------------------')
 
+trace_io('out', 'lse_compute_Ae_matrix');

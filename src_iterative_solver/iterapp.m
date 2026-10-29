@@ -21,6 +21,7 @@ function y = iterapp(op,afun,atype,afcnstr,x,varargin)
 %   $Revision: 1.7.4.3 $ $Date: 2005/06/21 19:37:27 $
 
 trace_call('iterapp');
+trace_io('in', 'iterapp');
 if strcmp(atype,'matrix')
     switch lower(op)
         case 'mtimes'
@@ -69,3 +70,4 @@ else
             atype,afcnstr)
     end
 end
+trace_io('out', 'iterapp');

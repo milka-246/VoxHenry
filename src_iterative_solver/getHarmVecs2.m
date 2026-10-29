@@ -15,6 +15,7 @@
 function harmVecs = getHarmVecs2(m,k,H2,V,U,C)
 
 trace_call('getHarmVecs2');
+trace_io('in', 'getHarmVecs2');
 B = H2' * H2;
 
 % A = | C'*U        0 |
@@ -35,3 +36,4 @@ hv = sortrows(hv);
 % k smallest harmonic ritz values
 % Actually, k largest of (1./harmonic Ritz value)
 harmVecs = hv((m-k)+1:m,2:m+1)';
+trace_io('out', 'getHarmVecs2');

@@ -12,6 +12,7 @@ function f = coefficients(n,np,l,k0,dx,ker_type)
 
 
 trace_call('coefficients');
+trace_io('in', 'coefficients');
 switch ker_type
     
     case 1
@@ -118,4 +119,5 @@ switch ker_type
 end
 
 
+trace_io('out', 'coefficients');
 end

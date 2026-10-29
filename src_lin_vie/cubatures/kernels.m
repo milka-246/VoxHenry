@@ -4,6 +4,7 @@ function f = kernels(X,Y,Z,Xp,Yp,Zp,k0,dx,r_m,r_n,n,l,ker_type,volume_ker)
 
 % chose one of the four surface-surface kernels (rows of the tables 1,2,3)
 trace_call('kernels');
+trace_io('in', 'kernels');
 switch ker_type
     case 1
         %% 1st surface-surface kernel
@@ -237,4 +238,5 @@ end
         
         
         
+trace_io('out', 'kernels');
 end

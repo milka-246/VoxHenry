@@ -1,4 +1,5 @@
 trace_call('pre_print_out_inputs_generate_consts');
+trace_io('in', 'pre_print_out_inputs_generate_consts', {'sigma_e', 'lambdaL', 'freq', 'freq_all', 'num_freq', 'num_ports', 'eo', 'omega', 'freq_curr_plot', 'plot_option'});
 disp('Inputs for simulation :::')
 % take as reference 'se' the maximum conductivity of any conductor
 se = max(max(max(sigma_e)));
@@ -73,3 +74,4 @@ end
 if (plot_option == 1)
     disp(['Currents will be plotted at the frequency ', num2str(freq_curr_plot)])
 end
+trace_io('out', 'pre_print_out_inputs_generate_consts', {'se', 'er', 'tmp_er', 'skin_depth', 'lL', 'sim_CPU_pre', 'sim_CPU_lse', 'freq_curr_plot'});

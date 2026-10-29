@@ -22,6 +22,7 @@
 function [x,r,k,resvec] = pgmres_iter(A,x,r,m,L1,L2,R1,R2,tol)
 
 trace_call('pgmres_iter');
+trace_io('in', 'pgmres_iter');
 if(isempty(L1))
    existL1 = 0;
 else
@@ -152,3 +153,4 @@ end
 % apply update x = x + V(:,1:k) * y;
 x = x + xupd;
 r = V(:,1:k+1) * res;
+trace_io('out', 'pgmres_iter');

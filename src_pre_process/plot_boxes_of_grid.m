@@ -1,6 +1,7 @@
 function plot_boxes_of_grid(r,res)
 
 trace_call('plot_boxes_of_grid');
+trace_io('in', 'plot_boxes_of_grid');
 fl_plot_w_voxel_cens = 0;
 
 figure
@@ -118,3 +119,4 @@ if (fl_method > 0)
     end
 end
 
+trace_io('out', 'plot_boxes_of_grid');

@@ -1,0 +1,26 @@
+# Created by Octave 9.4.0, Sat Oct 24 22:54:26 2026 MSK <milka@milka-OMEN-by-HP-Laptop-16-c0xxx>
+# name: num_freq
+# type: scalar
+2
+
+
+# name: num_ports
+# type: scalar
+1
+
+
+# name: freq_all
+# type: matrix
+# rows: 1
+# columns: 2
+ 2500000000 10000000000
+
+
+# name: R_jL_mat
+# type: complex matrix
+# ndims: 3
+ 1 1 2
+ (0.021868132457607718,2.2187460500541885e-11)
+ (0.038000824381377002,2.1623241784207674e-11)
+
+

@@ -1,0 +1,2359 @@
+% id  parent  dir  function  variables
+     1      0  in   pre_input_file  fileinname
+     1      0  out  pre_input_file  sigma_e lambdaL freq dx num_ports pnt_lft pnt_rght pnt_well_cond
+     2      0  in   EMconstants  freq
+     2      0  out  EMconstants  mu co eo eta omega lambda ko omega_mu
+     3      0  in   pre_define_structure_params  sigma_e lambdaL
+     3      0  out  pre_define_structure_params  L M N nD sigma_e_nonzero idxS idxS5 epsilon_r
+     4      0  in   pre_print_out_inputs_generate_consts  sigma_e lambdaL freq freq_all num_freq num_ports eo omega freq_curr_plot plot_option
+     4      0  out  pre_print_out_inputs_generate_consts  se er tmp_er skin_depth sim_CPU_pre sim_CPU_lse freq_curr_plot (missing: lL)
+     5      0  in   lse_generate_panelIDs  idxS L M N
+     5      0  out  lse_generate_panelIDs  all_panels_ids num_nodes
+     6      0  in   lse_compute_Ae_matrix  idxS all_panels_ids num_nodes
+     6      0  out  lse_compute_Ae_matrix  Ae Ae_only_leaving Ae_only_entering_bndry
+     7      0  in   lse_generate_circulant_tensor  dx ko L M N fl_no_fft
+     8      7  in   weights_points  N dim
+     9      8  in   gauss_1d  order
+     9      8  out  gauss_1d  weight xtab
+     8      7  out  weights_points  W X Y Z Xp Yp Zp
+    10      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    10      7  out  volume_volume  I
+    11      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    11      7  out  volume_volume  I
+    12      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    12      7  out  volume_volume  I
+    13      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    13      7  out  volume_volume  I
+    14      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    14      7  out  volume_volume  I
+    15      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    15      7  out  volume_volume  I
+    16      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    16      7  out  volume_volume  I
+    17      7  in   volume_volume  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker
+    17      7  out  volume_volume  I
+    18      7  in   weights_points  N dim
+    19     18  in   gauss_1d  order
+    19     18  out  gauss_1d  weight xtab
+    18      7  out  weights_points  W X Y Z Xp Yp Zp
+    20      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    20      7  out  volume_volume_sym  K
+    21      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    21      7  out  volume_volume_sym  K
+    22      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    22      7  out  volume_volume_sym  K
+    23      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    23      7  out  volume_volume_sym  K
+    24      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    24      7  out  volume_volume_sym  K
+    25      7  in   volume_volume_sym  W X Y Z Xp Yp Zp k0 r_m r_n dx volume_ker dir
+    25      7  out  volume_volume_sym  K
+    26      7  in   weights_points  N dim
+    27     26  in   gauss_1d  order
+    27     26  out  gauss_1d  weight xtab
+    26      7  out  weights_points  W X Y Z Xp (missing: Yp Zp)
+    28      7  in   surface_surface_coeff  dx k0
+    29     28  in   coefficients  n np l k0 dx ker_type
+    29     28  out  coefficients  f
+    30     28  in   coefficients  n np l k0 dx ker_type
+    30     28  out  coefficients  f
+    31     28  in   coefficients  n np l k0 dx ker_type
+    31     28  out  coefficients  f
+    32     28  in   coefficients  n np l k0 dx ker_type
+    32     28  out  coefficients  f
+    33     28  in   coefficients  n np l k0 dx ker_type
+    33     28  out  coefficients  f
+    34     28  in   coefficients  n np l k0 dx ker_type
+    34     28  out  coefficients  f
+    35     28  in   coefficients  n np l k0 dx ker_type
+    35     28  out  coefficients  f
+    36     28  in   coefficients  n np l k0 dx ker_type
+    36     28  out  coefficients  f
+    37     28  in   coefficients  n np l k0 dx ker_type
+    37     28  out  coefficients  f
+    38     28  in   coefficients  n np l k0 dx ker_type
+    38     28  out  coefficients  f
+    39     28  in   coefficients  n np l k0 dx ker_type
+    39     28  out  coefficients  f
+    40     28  in   coefficients  n np l k0 dx ker_type
+    40     28  out  coefficients  f
+    41     28  in   coefficients  n np l k0 dx ker_type
+    41     28  out  coefficients  f
+    42     28  in   coefficients  n np l k0 dx ker_type
+    42     28  out  coefficients  f
+    43     28  in   coefficients  n np l k0 dx ker_type
+    43     28  out  coefficients  f
+    44     28  in   coefficients  n np l k0 dx ker_type
+    44     28  out  coefficients  f
+    45     28  in   coefficients  n np l k0 dx ker_type
+    45     28  out  coefficients  f
+    46     28  in   coefficients  n np l k0 dx ker_type
+    46     28  out  coefficients  f
+    47     28  in   coefficients  n np l k0 dx ker_type
+    47     28  out  coefficients  f
+    48     28  in   coefficients  n np l k0 dx ker_type
+    48     28  out  coefficients  f
+    49     28  in   coefficients  n np l k0 dx ker_type
+    49     28  out  coefficients  f
+    50     28  in   coefficients  n np l k0 dx ker_type
+    50     28  out  coefficients  f
+    51     28  in   coefficients  n np l k0 dx ker_type
+    51     28  out  coefficients  f
+    52     28  in   coefficients  n np l k0 dx ker_type
+    52     28  out  coefficients  f
+    53     28  in   coefficients  n np l k0 dx ker_type
+    53     28  out  coefficients  f
+    54     28  in   coefficients  n np l k0 dx ker_type
+    54     28  out  coefficients  f
+    55     28  in   coefficients  n np l k0 dx ker_type
+    55     28  out  coefficients  f
+    56     28  in   coefficients  n np l k0 dx ker_type
+    56     28  out  coefficients  f
+    57     28  in   coefficients  n np l k0 dx ker_type
+    57     28  out  coefficients  f
+    58     28  in   coefficients  n np l k0 dx ker_type
+    58     28  out  coefficients  f
+    59     28  in   coefficients  n np l k0 dx ker_type
+    59     28  out  coefficients  f
+    60     28  in   coefficients  n np l k0 dx ker_type
+    60     28  out  coefficients  f
+    61     28  in   coefficients  n np l k0 dx ker_type
+    61     28  out  coefficients  f
+    62     28  in   coefficients  n np l k0 dx ker_type
+    62     28  out  coefficients  f
+    63     28  in   coefficients  n np l k0 dx ker_type
+    63     28  out  coefficients  f
+    64     28  in   coefficients  n np l k0 dx ker_type
+    64     28  out  coefficients  f
+    65     28  in   coefficients  n np l k0 dx ker_type
+    65     28  out  coefficients  f
+    66     28  in   coefficients  n np l k0 dx ker_type
+    66     28  out  coefficients  f
+    67     28  in   coefficients  n np l k0 dx ker_type
+    67     28  out  coefficients  f
+    68     28  in   coefficients  n np l k0 dx ker_type
+    68     28  out  coefficients  f
+    69     28  in   coefficients  n np l k0 dx ker_type
+    69     28  out  coefficients  f
+    70     28  in   coefficients  n np l k0 dx ker_type
+    70     28  out  coefficients  f
+    71     28  in   coefficients  n np l k0 dx ker_type
+    71     28  out  coefficients  f
+    72     28  in   coefficients  n np l k0 dx ker_type
+    72     28  out  coefficients  f
+    73     28  in   coefficients  n np l k0 dx ker_type
+    73     28  out  coefficients  f
+    74     28  in   coefficients  n np l k0 dx ker_type
+    74     28  out  coefficients  f
+    75     28  in   coefficients  n np l k0 dx ker_type
+    75     28  out  coefficients  f
+    76     28  in   coefficients  n np l k0 dx ker_type
+    76     28  out  coefficients  f
+    77     28  in   coefficients  n np l k0 dx ker_type
+    77     28  out  coefficients  f
+    78     28  in   coefficients  n np l k0 dx ker_type
+    78     28  out  coefficients  f
+    79     28  in   coefficients  n np l k0 dx ker_type
+    79     28  out  coefficients  f
+    80     28  in   coefficients  n np l k0 dx ker_type
+    80     28  out  coefficients  f
+    81     28  in   coefficients  n np l k0 dx ker_type
+    81     28  out  coefficients  f
+    82     28  in   coefficients  n np l k0 dx ker_type
+    82     28  out  coefficients  f
+    83     28  in   coefficients  n np l k0 dx ker_type
+    83     28  out  coefficients  f
+    84     28  in   coefficients  n np l k0 dx ker_type
+    84     28  out  coefficients  f
+    85     28  in   coefficients  n np l k0 dx ker_type
+    85     28  out  coefficients  f
+    86     28  in   coefficients  n np l k0 dx ker_type
+    86     28  out  coefficients  f
+    87     28  in   coefficients  n np l k0 dx ker_type
+    87     28  out  coefficients  f
+    88     28  in   coefficients  n np l k0 dx ker_type
+    88     28  out  coefficients  f
+    89     28  in   coefficients  n np l k0 dx ker_type
+    89     28  out  coefficients  f
+    90     28  in   coefficients  n np l k0 dx ker_type
+    90     28  out  coefficients  f
+    91     28  in   coefficients  n np l k0 dx ker_type
+    91     28  out  coefficients  f
+    92     28  in   coefficients  n np l k0 dx ker_type
+    92     28  out  coefficients  f
+    93     28  in   coefficients  n np l k0 dx ker_type
+    93     28  out  coefficients  f
+    94     28  in   coefficients  n np l k0 dx ker_type
+    94     28  out  coefficients  f
+    95     28  in   coefficients  n np l k0 dx ker_type
+    95     28  out  coefficients  f
+    96     28  in   coefficients  n np l k0 dx ker_type
+    96     28  out  coefficients  f
+    97     28  in   coefficients  n np l k0 dx ker_type
+    97     28  out  coefficients  f
+    98     28  in   coefficients  n np l k0 dx ker_type
+    98     28  out  coefficients  f
+    99     28  in   coefficients  n np l k0 dx ker_type
+    99     28  out  coefficients  f
+   100     28  in   coefficients  n np l k0 dx ker_type
+   100     28  out  coefficients  f
+   101     28  in   coefficients  n np l k0 dx ker_type
+   101     28  out  coefficients  f
+   102     28  in   coefficients  n np l k0 dx ker_type
+   102     28  out  coefficients  f
+   103     28  in   coefficients  n np l k0 dx ker_type
+   103     28  out  coefficients  f
+   104     28  in   coefficients  n np l k0 dx ker_type
+   104     28  out  coefficients  f
+   105     28  in   coefficients  n np l k0 dx ker_type
+   105     28  out  coefficients  f
+   106     28  in   coefficients  n np l k0 dx ker_type
+   106     28  out  coefficients  f
+   107     28  in   coefficients  n np l k0 dx ker_type
+   107     28  out  coefficients  f
+   108     28  in   coefficients  n np l k0 dx ker_type
+   108     28  out  coefficients  f
+   109     28  in   coefficients  n np l k0 dx ker_type
+   109     28  out  coefficients  f
+   110     28  in   coefficients  n np l k0 dx ker_type
+   110     28  out  coefficients  f
+   111     28  in   coefficients  n np l k0 dx ker_type
+   111     28  out  coefficients  f
+   112     28  in   coefficients  n np l k0 dx ker_type
+   112     28  out  coefficients  f
+   113     28  in   coefficients  n np l k0 dx ker_type
+   113     28  out  coefficients  f
+   114     28  in   coefficients  n np l k0 dx ker_type
+   114     28  out  coefficients  f
+   115     28  in   coefficients  n np l k0 dx ker_type
+   115     28  out  coefficients  f
+   116     28  in   coefficients  n np l k0 dx ker_type
+   116     28  out  coefficients  f
+   117     28  in   coefficients  n np l k0 dx ker_type
+   117     28  out  coefficients  f
+   118     28  in   coefficients  n np l k0 dx ker_type
+   118     28  out  coefficients  f
+   119     28  in   coefficients  n np l k0 dx ker_type
+   119     28  out  coefficients  f
+   120     28  in   coefficients  n np l k0 dx ker_type
+   120     28  out  coefficients  f
+   121     28  in   coefficients  n np l k0 dx ker_type
+   121     28  out  coefficients  f
+   122     28  in   coefficients  n np l k0 dx ker_type
+   122     28  out  coefficients  f
+   123     28  in   coefficients  n np l k0 dx ker_type
+   123     28  out  coefficients  f
+   124     28  in   coefficients  n np l k0 dx ker_type
+   124     28  out  coefficients  f
+   125     28  in   coefficients  n np l k0 dx ker_type
+   125     28  out  coefficients  f
+   126     28  in   coefficients  n np l k0 dx ker_type
+   126     28  out  coefficients  f
+   127     28  in   coefficients  n np l k0 dx ker_type
+   127     28  out  coefficients  f
+   128     28  in   coefficients  n np l k0 dx ker_type
+   128     28  out  coefficients  f
+   129     28  in   coefficients  n np l k0 dx ker_type
+   129     28  out  coefficients  f
+   130     28  in   coefficients  n np l k0 dx ker_type
+   130     28  out  coefficients  f
+   131     28  in   coefficients  n np l k0 dx ker_type
+   131     28  out  coefficients  f
+   132     28  in   coefficients  n np l k0 dx ker_type
+   132     28  out  coefficients  f
+   133     28  in   coefficients  n np l k0 dx ker_type
+   133     28  out  coefficients  f
+   134     28  in   coefficients  n np l k0 dx ker_type
+   134     28  out  coefficients  f
+   135     28  in   coefficients  n np l k0 dx ker_type
+   135     28  out  coefficients  f
+   136     28  in   coefficients  n np l k0 dx ker_type
+   136     28  out  coefficients  f
+   137     28  in   coefficients  n np l k0 dx ker_type
+   137     28  out  coefficients  f
+   138     28  in   coefficients  n np l k0 dx ker_type
+   138     28  out  coefficients  f
+   139     28  in   coefficients  n np l k0 dx ker_type
+   139     28  out  coefficients  f
+   140     28  in   coefficients  n np l k0 dx ker_type
+   140     28  out  coefficients  f
+   141     28  in   coefficients  n np l k0 dx ker_type
+   141     28  out  coefficients  f
+   142     28  in   coefficients  n np l k0 dx ker_type
+   142     28  out  coefficients  f
+   143     28  in   coefficients  n np l k0 dx ker_type
+   143     28  out  coefficients  f
+   144     28  in   coefficients  n np l k0 dx ker_type
+   144     28  out  coefficients  f
+   145     28  in   coefficients  n np l k0 dx ker_type
+   145     28  out  coefficients  f
+   146     28  in   coefficients  n np l k0 dx ker_type
+   146     28  out  coefficients  f
+   147     28  in   coefficients  n np l k0 dx ker_type
+   147     28  out  coefficients  f
+   148     28  in   coefficients  n np l k0 dx ker_type
+   148     28  out  coefficients  f
+   149     28  in   coefficients  n np l k0 dx ker_type
+   149     28  out  coefficients  f
+   150     28  in   coefficients  n np l k0 dx ker_type
+   150     28  out  coefficients  f
+   151     28  in   coefficients  n np l k0 dx ker_type
+   151     28  out  coefficients  f
+   152     28  in   coefficients  n np l k0 dx ker_type
+   152     28  out  coefficients  f
+   153     28  in   coefficients  n np l k0 dx ker_type
+   153     28  out  coefficients  f
+   154     28  in   coefficients  n np l k0 dx ker_type
+   154     28  out  coefficients  f
+   155     28  in   coefficients  n np l k0 dx ker_type
+   155     28  out  coefficients  f
+   156     28  in   coefficients  n np l k0 dx ker_type
+   156     28  out  coefficients  f
+   157     28  in   coefficients  n np l k0 dx ker_type
+   157     28  out  coefficients  f
+   158     28  in   coefficients  n np l k0 dx ker_type
+   158     28  out  coefficients  f
+   159     28  in   coefficients  n np l k0 dx ker_type
+   159     28  out  coefficients  f
+   160     28  in   coefficients  n np l k0 dx ker_type
+   160     28  out  coefficients  f
+   161     28  in   coefficients  n np l k0 dx ker_type
+   161     28  out  coefficients  f
+   162     28  in   coefficients  n np l k0 dx ker_type
+   162     28  out  coefficients  f
+   163     28  in   coefficients  n np l k0 dx ker_type
+   163     28  out  coefficients  f
+   164     28  in   coefficients  n np l k0 dx ker_type
+   164     28  out  coefficients  f
+   165     28  in   coefficients  n np l k0 dx ker_type
+   165     28  out  coefficients  f
+   166     28  in   coefficients  n np l k0 dx ker_type
+   166     28  out  coefficients  f
+   167     28  in   coefficients  n np l k0 dx ker_type
+   167     28  out  coefficients  f
+   168     28  in   coefficients  n np l k0 dx ker_type
+   168     28  out  coefficients  f
+   169     28  in   coefficients  n np l k0 dx ker_type
+   169     28  out  coefficients  f
+   170     28  in   coefficients  n np l k0 dx ker_type
+   170     28  out  coefficients  f
+   171     28  in   coefficients  n np l k0 dx ker_type
+   171     28  out  coefficients  f
+   172     28  in   coefficients  n np l k0 dx ker_type
+   172     28  out  coefficients  f
+   173     28  in   coefficients  n np l k0 dx ker_type
+   173     28  out  coefficients  f
+   174     28  in   coefficients  n np l k0 dx ker_type
+   174     28  out  coefficients  f
+   175     28  in   coefficients  n np l k0 dx ker_type
+   175     28  out  coefficients  f
+   176     28  in   coefficients  n np l k0 dx ker_type
+   176     28  out  coefficients  f
+   177     28  in   coefficients  n np l k0 dx ker_type
+   177     28  out  coefficients  f
+   178     28  in   coefficients  n np l k0 dx ker_type
+   178     28  out  coefficients  f
+   179     28  in   coefficients  n np l k0 dx ker_type
+   179     28  out  coefficients  f
+   180     28  in   coefficients  n np l k0 dx ker_type
+   180     28  out  coefficients  f
+   181     28  in   coefficients  n np l k0 dx ker_type
+   181     28  out  coefficients  f
+   182     28  in   coefficients  n np l k0 dx ker_type
+   182     28  out  coefficients  f
+   183     28  in   coefficients  n np l k0 dx ker_type
+   183     28  out  coefficients  f
+   184     28  in   coefficients  n np l k0 dx ker_type
+   184     28  out  coefficients  f
+   185     28  in   coefficients  n np l k0 dx ker_type
+   185     28  out  coefficients  f
+   186     28  in   coefficients  n np l k0 dx ker_type
+   186     28  out  coefficients  f
+   187     28  in   coefficients  n np l k0 dx ker_type
+   187     28  out  coefficients  f
+   188     28  in   coefficients  n np l k0 dx ker_type
+   188     28  out  coefficients  f
+   189     28  in   coefficients  n np l k0 dx ker_type
+   189     28  out  coefficients  f
+   190     28  in   coefficients  n np l k0 dx ker_type
+   190     28  out  coefficients  f
+   191     28  in   coefficients  n np l k0 dx ker_type
+   191     28  out  coefficients  f
+   192     28  in   coefficients  n np l k0 dx ker_type
+   192     28  out  coefficients  f
+   193     28  in   coefficients  n np l k0 dx ker_type
+   193     28  out  coefficients  f
+   194     28  in   coefficients  n np l k0 dx ker_type
+   194     28  out  coefficients  f
+   195     28  in   coefficients  n np l k0 dx ker_type
+   195     28  out  coefficients  f
+   196     28  in   coefficients  n np l k0 dx ker_type
+   196     28  out  coefficients  f
+   197     28  in   coefficients  n np l k0 dx ker_type
+   197     28  out  coefficients  f
+   198     28  in   coefficients  n np l k0 dx ker_type
+   198     28  out  coefficients  f
+   199     28  in   coefficients  n np l k0 dx ker_type
+   199     28  out  coefficients  f
+   200     28  in   coefficients  n np l k0 dx ker_type
+   200     28  out  coefficients  f
+   201     28  in   coefficients  n np l k0 dx ker_type
+   201     28  out  coefficients  f
+   202     28  in   coefficients  n np l k0 dx ker_type
+   202     28  out  coefficients  f
+   203     28  in   coefficients  n np l k0 dx ker_type
+   203     28  out  coefficients  f
+   204     28  in   coefficients  n np l k0 dx ker_type
+   204     28  out  coefficients  f
+   205     28  in   coefficients  n np l k0 dx ker_type
+   205     28  out  coefficients  f
+   206     28  in   coefficients  n np l k0 dx ker_type
+   206     28  out  coefficients  f
+   207     28  in   coefficients  n np l k0 dx ker_type
+   207     28  out  coefficients  f
+   208     28  in   coefficients  n np l k0 dx ker_type
+   208     28  out  coefficients  f
+   209     28  in   coefficients  n np l k0 dx ker_type
+   209     28  out  coefficients  f
+   210     28  in   coefficients  n np l k0 dx ker_type
+   210     28  out  coefficients  f
+   211     28  in   coefficients  n np l k0 dx ker_type
+   211     28  out  coefficients  f
+   212     28  in   coefficients  n np l k0 dx ker_type
+   212     28  out  coefficients  f
+   213     28  in   coefficients  n np l k0 dx ker_type
+   213     28  out  coefficients  f
+   214     28  in   coefficients  n np l k0 dx ker_type
+   214     28  out  coefficients  f
+   215     28  in   coefficients  n np l k0 dx ker_type
+   215     28  out  coefficients  f
+   216     28  in   coefficients  n np l k0 dx ker_type
+   216     28  out  coefficients  f
+   217     28  in   coefficients  n np l k0 dx ker_type
+   217     28  out  coefficients  f
+   218     28  in   coefficients  n np l k0 dx ker_type
+   218     28  out  coefficients  f
+   219     28  in   coefficients  n np l k0 dx ker_type
+   219     28  out  coefficients  f
+   220     28  in   coefficients  n np l k0 dx ker_type
+   220     28  out  coefficients  f
+   221     28  in   coefficients  n np l k0 dx ker_type
+   221     28  out  coefficients  f
+   222     28  in   coefficients  n np l k0 dx ker_type
+   222     28  out  coefficients  f
+   223     28  in   coefficients  n np l k0 dx ker_type
+   223     28  out  coefficients  f
+   224     28  in   coefficients  n np l k0 dx ker_type
+   224     28  out  coefficients  f
+   225     28  in   coefficients  n np l k0 dx ker_type
+   225     28  out  coefficients  f
+   226     28  in   coefficients  n np l k0 dx ker_type
+   226     28  out  coefficients  f
+   227     28  in   coefficients  n np l k0 dx ker_type
+   227     28  out  coefficients  f
+   228     28  in   coefficients  n np l k0 dx ker_type
+   228     28  out  coefficients  f
+   229     28  in   coefficients  n np l k0 dx ker_type
+   229     28  out  coefficients  f
+   230     28  in   coefficients  n np l k0 dx ker_type
+   230     28  out  coefficients  f
+   231     28  in   coefficients  n np l k0 dx ker_type
+   231     28  out  coefficients  f
+   232     28  in   coefficients  n np l k0 dx ker_type
+   232     28  out  coefficients  f
+   233     28  in   coefficients  n np l k0 dx ker_type
+   233     28  out  coefficients  f
+   234     28  in   coefficients  n np l k0 dx ker_type
+   234     28  out  coefficients  f
+   235     28  in   coefficients  n np l k0 dx ker_type
+   235     28  out  coefficients  f
+   236     28  in   coefficients  n np l k0 dx ker_type
+   236     28  out  coefficients  f
+   237     28  in   coefficients  n np l k0 dx ker_type
+   237     28  out  coefficients  f
+   238     28  in   coefficients  n np l k0 dx ker_type
+   238     28  out  coefficients  f
+   239     28  in   coefficients  n np l k0 dx ker_type
+   239     28  out  coefficients  f
+   240     28  in   coefficients  n np l k0 dx ker_type
+   240     28  out  coefficients  f
+   241     28  in   coefficients  n np l k0 dx ker_type
+   241     28  out  coefficients  f
+   242     28  in   coefficients  n np l k0 dx ker_type
+   242     28  out  coefficients  f
+   243     28  in   coefficients  n np l k0 dx ker_type
+   243     28  out  coefficients  f
+   244     28  in   coefficients  n np l k0 dx ker_type
+   244     28  out  coefficients  f
+   245     28  in   coefficients  n np l k0 dx ker_type
+   245     28  out  coefficients  f
+   246     28  in   coefficients  n np l k0 dx ker_type
+   246     28  out  coefficients  f
+   247     28  in   coefficients  n np l k0 dx ker_type
+   247     28  out  coefficients  f
+   248     28  in   coefficients  n np l k0 dx ker_type
+   248     28  out  coefficients  f
+   249     28  in   coefficients  n np l k0 dx ker_type
+   249     28  out  coefficients  f
+   250     28  in   coefficients  n np l k0 dx ker_type
+   250     28  out  coefficients  f
+   251     28  in   coefficients  n np l k0 dx ker_type
+   251     28  out  coefficients  f
+   252     28  in   coefficients  n np l k0 dx ker_type
+   252     28  out  coefficients  f
+   253     28  in   coefficients  n np l k0 dx ker_type
+   253     28  out  coefficients  f
+   254     28  in   coefficients  n np l k0 dx ker_type
+   254     28  out  coefficients  f
+   255     28  in   coefficients  n np l k0 dx ker_type
+   255     28  out  coefficients  f
+   256     28  in   coefficients  n np l k0 dx ker_type
+   256     28  out  coefficients  f
+   257     28  in   coefficients  n np l k0 dx ker_type
+   257     28  out  coefficients  f
+   258     28  in   coefficients  n np l k0 dx ker_type
+   258     28  out  coefficients  f
+   259     28  in   coefficients  n np l k0 dx ker_type
+   259     28  out  coefficients  f
+   260     28  in   coefficients  n np l k0 dx ker_type
+   260     28  out  coefficients  f
+   261     28  in   coefficients  n np l k0 dx ker_type
+   261     28  out  coefficients  f
+   262     28  in   coefficients  n np l k0 dx ker_type
+   262     28  out  coefficients  f
+   263     28  in   coefficients  n np l k0 dx ker_type
+   263     28  out  coefficients  f
+   264     28  in   coefficients  n np l k0 dx ker_type
+   264     28  out  coefficients  f
+   265     28  in   coefficients  n np l k0 dx ker_type
+   265     28  out  coefficients  f
+   266     28  in   coefficients  n np l k0 dx ker_type
+   266     28  out  coefficients  f
+   267     28  in   coefficients  n np l k0 dx ker_type
+   267     28  out  coefficients  f
+   268     28  in   coefficients  n np l k0 dx ker_type
+   268     28  out  coefficients  f
+   269     28  in   coefficients  n np l k0 dx ker_type
+   269     28  out  coefficients  f
+   270     28  in   coefficients  n np l k0 dx ker_type
+   270     28  out  coefficients  f
+   271     28  in   coefficients  n np l k0 dx ker_type
+   271     28  out  coefficients  f
+   272     28  in   coefficients  n np l k0 dx ker_type
+   272     28  out  coefficients  f
+   273     28  in   coefficients  n np l k0 dx ker_type
+   273     28  out  coefficients  f
+   274     28  in   coefficients  n np l k0 dx ker_type
+   274     28  out  coefficients  f
+   275     28  in   coefficients  n np l k0 dx ker_type
+   275     28  out  coefficients  f
+   276     28  in   coefficients  n np l k0 dx ker_type
+   276     28  out  coefficients  f
+   277     28  in   coefficients  n np l k0 dx ker_type
+   277     28  out  coefficients  f
+   278     28  in   coefficients  n np l k0 dx ker_type
+   278     28  out  coefficients  f
+   279     28  in   coefficients  n np l k0 dx ker_type
+   279     28  out  coefficients  f
+   280     28  in   coefficients  n np l k0 dx ker_type
+   280     28  out  coefficients  f
+   281     28  in   coefficients  n np l k0 dx ker_type
+   281     28  out  coefficients  f
+   282     28  in   coefficients  n np l k0 dx ker_type
+   282     28  out  coefficients  f
+   283     28  in   coefficients  n np l k0 dx ker_type
+   283     28  out  coefficients  f
+   284     28  in   coefficients  n np l k0 dx ker_type
+   284     28  out  coefficients  f
+   285     28  in   coefficients  n np l k0 dx ker_type
+   285     28  out  coefficients  f
+   286     28  in   coefficients  n np l k0 dx ker_type
+   286     28  out  coefficients  f
+   287     28  in   coefficients  n np l k0 dx ker_type
+   287     28  out  coefficients  f
+   288     28  in   coefficients  n np l k0 dx ker_type
+   288     28  out  coefficients  f
+   289     28  in   coefficients  n np l k0 dx ker_type
+   289     28  out  coefficients  f
+   290     28  in   coefficients  n np l k0 dx ker_type
+   290     28  out  coefficients  f
+   291     28  in   coefficients  n np l k0 dx ker_type
+   291     28  out  coefficients  f
+   292     28  in   coefficients  n np l k0 dx ker_type
+   292     28  out  coefficients  f
+   293     28  in   coefficients  n np l k0 dx ker_type
+   293     28  out  coefficients  f
+   294     28  in   coefficients  n np l k0 dx ker_type
+   294     28  out  coefficients  f
+   295     28  in   coefficients  n np l k0 dx ker_type
+   295     28  out  coefficients  f
+   296     28  in   coefficients  n np l k0 dx ker_type
+   296     28  out  coefficients  f
+   297     28  in   coefficients  n np l k0 dx ker_type
+   297     28  out  coefficients  f
+   298     28  in   coefficients  n np l k0 dx ker_type
+   298     28  out  coefficients  f
+   299     28  in   coefficients  n np l k0 dx ker_type
+   299     28  out  coefficients  f
+   300     28  in   coefficients  n np l k0 dx ker_type
+   300     28  out  coefficients  f
+   301     28  in   coefficients  n np l k0 dx ker_type
+   301     28  out  coefficients  f
+   302     28  in   coefficients  n np l k0 dx ker_type
+   302     28  out  coefficients  f
+   303     28  in   coefficients  n np l k0 dx ker_type
+   303     28  out  coefficients  f
+   304     28  in   coefficients  n np l k0 dx ker_type
+   304     28  out  coefficients  f
+   305     28  in   coefficients  n np l k0 dx ker_type
+   305     28  out  coefficients  f
+   306     28  in   coefficients  n np l k0 dx ker_type
+   306     28  out  coefficients  f
+   307     28  in   coefficients  n np l k0 dx ker_type
+   307     28  out  coefficients  f
+   308     28  in   coefficients  n np l k0 dx ker_type
+   308     28  out  coefficients  f
+   309     28  in   coefficients  n np l k0 dx ker_type
+   309     28  out  coefficients  f
+   310     28  in   coefficients  n np l k0 dx ker_type
+   310     28  out  coefficients  f
+   311     28  in   coefficients  n np l k0 dx ker_type
+   311     28  out  coefficients  f
+   312     28  in   coefficients  n np l k0 dx ker_type
+   312     28  out  coefficients  f
+   313     28  in   coefficients  n np l k0 dx ker_type
+   313     28  out  coefficients  f
+   314     28  in   coefficients  n np l k0 dx ker_type
+   314     28  out  coefficients  f
+   315     28  in   coefficients  n np l k0 dx ker_type
+   315     28  out  coefficients  f
+   316     28  in   coefficients  n np l k0 dx ker_type
+   316     28  out  coefficients  f
+   317     28  in   coefficients  n np l k0 dx ker_type
+   317     28  out  coefficients  f
+   318     28  in   coefficients  n np l k0 dx ker_type
+   318     28  out  coefficients  f
+   319     28  in   coefficients  n np l k0 dx ker_type
+   319     28  out  coefficients  f
+   320     28  in   coefficients  n np l k0 dx ker_type
+   320     28  out  coefficients  f
+   321     28  in   coefficients  n np l k0 dx ker_type
+   321     28  out  coefficients  f
+   322     28  in   coefficients  n np l k0 dx ker_type
+   322     28  out  coefficients  f
+   323     28  in   coefficients  n np l k0 dx ker_type
+   323     28  out  coefficients  f
+   324     28  in   coefficients  n np l k0 dx ker_type
+   324     28  out  coefficients  f
+   325     28  in   coefficients  n np l k0 dx ker_type
+   325     28  out  coefficients  f
+   326     28  in   coefficients  n np l k0 dx ker_type
+   326     28  out  coefficients  f
+   327     28  in   coefficients  n np l k0 dx ker_type
+   327     28  out  coefficients  f
+   328     28  in   coefficients  n np l k0 dx ker_type
+   328     28  out  coefficients  f
+   329     28  in   coefficients  n np l k0 dx ker_type
+   329     28  out  coefficients  f
+   330     28  in   coefficients  n np l k0 dx ker_type
+   330     28  out  coefficients  f
+   331     28  in   coefficients  n np l k0 dx ker_type
+   331     28  out  coefficients  f
+   332     28  in   coefficients  n np l k0 dx ker_type
+   332     28  out  coefficients  f
+   333     28  in   coefficients  n np l k0 dx ker_type
+   333     28  out  coefficients  f
+   334     28  in   coefficients  n np l k0 dx ker_type
+   334     28  out  coefficients  f
+   335     28  in   coefficients  n np l k0 dx ker_type
+   335     28  out  coefficients  f
+   336     28  in   coefficients  n np l k0 dx ker_type
+   336     28  out  coefficients  f
+   337     28  in   coefficients  n np l k0 dx ker_type
+   337     28  out  coefficients  f
+   338     28  in   coefficients  n np l k0 dx ker_type
+   338     28  out  coefficients  f
+   339     28  in   coefficients  n np l k0 dx ker_type
+   339     28  out  coefficients  f
+   340     28  in   coefficients  n np l k0 dx ker_type
+   340     28  out  coefficients  f
+   341     28  in   coefficients  n np l k0 dx ker_type
+   341     28  out  coefficients  f
+   342     28  in   coefficients  n np l k0 dx ker_type
+   342     28  out  coefficients  f
+   343     28  in   coefficients  n np l k0 dx ker_type
+   343     28  out  coefficients  f
+   344     28  in   coefficients  n np l k0 dx ker_type
+   344     28  out  coefficients  f
+   345     28  in   coefficients  n np l k0 dx ker_type
+   345     28  out  coefficients  f
+   346     28  in   coefficients  n np l k0 dx ker_type
+   346     28  out  coefficients  f
+   347     28  in   coefficients  n np l k0 dx ker_type
+   347     28  out  coefficients  f
+   348     28  in   coefficients  n np l k0 dx ker_type
+   348     28  out  coefficients  f
+   349     28  in   coefficients  n np l k0 dx ker_type
+   349     28  out  coefficients  f
+   350     28  in   coefficients  n np l k0 dx ker_type
+   350     28  out  coefficients  f
+   351     28  in   coefficients  n np l k0 dx ker_type
+   351     28  out  coefficients  f
+   352     28  in   coefficients  n np l k0 dx ker_type
+   352     28  out  coefficients  f
+   353     28  in   coefficients  n np l k0 dx ker_type
+   353     28  out  coefficients  f
+   354     28  in   coefficients  n np l k0 dx ker_type
+   354     28  out  coefficients  f
+   355     28  in   coefficients  n np l k0 dx ker_type
+   355     28  out  coefficients  f
+   356     28  in   coefficients  n np l k0 dx ker_type
+   356     28  out  coefficients  f
+   357     28  in   coefficients  n np l k0 dx ker_type
+   357     28  out  coefficients  f
+   358     28  in   coefficients  n np l k0 dx ker_type
+   358     28  out  coefficients  f
+   359     28  in   coefficients  n np l k0 dx ker_type
+   359     28  out  coefficients  f
+   360     28  in   coefficients  n np l k0 dx ker_type
+   360     28  out  coefficients  f
+   361     28  in   coefficients  n np l k0 dx ker_type
+   361     28  out  coefficients  f
+   362     28  in   coefficients  n np l k0 dx ker_type
+   362     28  out  coefficients  f
+   363     28  in   coefficients  n np l k0 dx ker_type
+   363     28  out  coefficients  f
+   364     28  in   coefficients  n np l k0 dx ker_type
+   364     28  out  coefficients  f
+   365     28  in   coefficients  n np l k0 dx ker_type
+   365     28  out  coefficients  f
+   366     28  in   coefficients  n np l k0 dx ker_type
+   366     28  out  coefficients  f
+   367     28  in   coefficients  n np l k0 dx ker_type
+   367     28  out  coefficients  f
+   368     28  in   coefficients  n np l k0 dx ker_type
+   368     28  out  coefficients  f
+   369     28  in   coefficients  n np l k0 dx ker_type
+   369     28  out  coefficients  f
+   370     28  in   coefficients  n np l k0 dx ker_type
+   370     28  out  coefficients  f
+   371     28  in   coefficients  n np l k0 dx ker_type
+   371     28  out  coefficients  f
+   372     28  in   coefficients  n np l k0 dx ker_type
+   372     28  out  coefficients  f
+   373     28  in   coefficients  n np l k0 dx ker_type
+   373     28  out  coefficients  f
+   374     28  in   coefficients  n np l k0 dx ker_type
+   374     28  out  coefficients  f
+   375     28  in   coefficients  n np l k0 dx ker_type
+   375     28  out  coefficients  f
+   376     28  in   coefficients  n np l k0 dx ker_type
+   376     28  out  coefficients  f
+   377     28  in   coefficients  n np l k0 dx ker_type
+   377     28  out  coefficients  f
+   378     28  in   coefficients  n np l k0 dx ker_type
+   378     28  out  coefficients  f
+   379     28  in   coefficients  n np l k0 dx ker_type
+   379     28  out  coefficients  f
+   380     28  in   coefficients  n np l k0 dx ker_type
+   380     28  out  coefficients  f
+   381     28  in   coefficients  n np l k0 dx ker_type
+   381     28  out  coefficients  f
+   382     28  in   coefficients  n np l k0 dx ker_type
+   382     28  out  coefficients  f
+   383     28  in   coefficients  n np l k0 dx ker_type
+   383     28  out  coefficients  f
+   384     28  in   coefficients  n np l k0 dx ker_type
+   384     28  out  coefficients  f
+   385     28  in   coefficients  n np l k0 dx ker_type
+   385     28  out  coefficients  f
+   386     28  in   coefficients  n np l k0 dx ker_type
+   386     28  out  coefficients  f
+   387     28  in   coefficients  n np l k0 dx ker_type
+   387     28  out  coefficients  f
+   388     28  in   coefficients  n np l k0 dx ker_type
+   388     28  out  coefficients  f
+   389     28  in   coefficients  n np l k0 dx ker_type
+   389     28  out  coefficients  f
+   390     28  in   coefficients  n np l k0 dx ker_type
+   390     28  out  coefficients  f
+   391     28  in   coefficients  n np l k0 dx ker_type
+   391     28  out  coefficients  f
+   392     28  in   coefficients  n np l k0 dx ker_type
+   392     28  out  coefficients  f
+   393     28  in   coefficients  n np l k0 dx ker_type
+   393     28  out  coefficients  f
+   394     28  in   coefficients  n np l k0 dx ker_type
+   394     28  out  coefficients  f
+   395     28  in   coefficients  n np l k0 dx ker_type
+   395     28  out  coefficients  f
+   396     28  in   coefficients  n np l k0 dx ker_type
+   396     28  out  coefficients  f
+   397     28  in   coefficients  n np l k0 dx ker_type
+   397     28  out  coefficients  f
+   398     28  in   coefficients  n np l k0 dx ker_type
+   398     28  out  coefficients  f
+   399     28  in   coefficients  n np l k0 dx ker_type
+   399     28  out  coefficients  f
+   400     28  in   coefficients  n np l k0 dx ker_type
+   400     28  out  coefficients  f
+   401     28  in   coefficients  n np l k0 dx ker_type
+   401     28  out  coefficients  f
+   402     28  in   coefficients  n np l k0 dx ker_type
+   402     28  out  coefficients  f
+   403     28  in   coefficients  n np l k0 dx ker_type
+   403     28  out  coefficients  f
+   404     28  in   coefficients  n np l k0 dx ker_type
+   404     28  out  coefficients  f
+   405     28  in   coefficients  n np l k0 dx ker_type
+   405     28  out  coefficients  f
+   406     28  in   coefficients  n np l k0 dx ker_type
+   406     28  out  coefficients  f
+   407     28  in   coefficients  n np l k0 dx ker_type
+   407     28  out  coefficients  f
+   408     28  in   coefficients  n np l k0 dx ker_type
+   408     28  out  coefficients  f
+   409     28  in   coefficients  n np l k0 dx ker_type
+   409     28  out  coefficients  f
+   410     28  in   coefficients  n np l k0 dx ker_type
+   410     28  out  coefficients  f
+   411     28  in   coefficients  n np l k0 dx ker_type
+   411     28  out  coefficients  f
+   412     28  in   coefficients  n np l k0 dx ker_type
+   412     28  out  coefficients  f
+   413     28  in   coefficients  n np l k0 dx ker_type
+   413     28  out  coefficients  f
+   414     28  in   coefficients  n np l k0 dx ker_type
+   414     28  out  coefficients  f
+   415     28  in   coefficients  n np l k0 dx ker_type
+   415     28  out  coefficients  f
+   416     28  in   coefficients  n np l k0 dx ker_type
+   416     28  out  coefficients  f
+   417     28  in   coefficients  n np l k0 dx ker_type
+   417     28  out  coefficients  f
+   418     28  in   coefficients  n np l k0 dx ker_type
+   418     28  out  coefficients  f
+   419     28  in   coefficients  n np l k0 dx ker_type
+   419     28  out  coefficients  f
+   420     28  in   coefficients  n np l k0 dx ker_type
+   420     28  out  coefficients  f
+   421     28  in   coefficients  n np l k0 dx ker_type
+   421     28  out  coefficients  f
+   422     28  in   coefficients  n np l k0 dx ker_type
+   422     28  out  coefficients  f
+   423     28  in   coefficients  n np l k0 dx ker_type
+   423     28  out  coefficients  f
+   424     28  in   coefficients  n np l k0 dx ker_type
+   424     28  out  coefficients  f
+   425     28  in   coefficients  n np l k0 dx ker_type
+   425     28  out  coefficients  f
+   426     28  in   coefficients  n np l k0 dx ker_type
+   426     28  out  coefficients  f
+   427     28  in   coefficients  n np l k0 dx ker_type
+   427     28  out  coefficients  f
+   428     28  in   coefficients  n np l k0 dx ker_type
+   428     28  out  coefficients  f
+   429     28  in   coefficients  n np l k0 dx ker_type
+   429     28  out  coefficients  f
+   430     28  in   coefficients  n np l k0 dx ker_type
+   430     28  out  coefficients  f
+   431     28  in   coefficients  n np l k0 dx ker_type
+   431     28  out  coefficients  f
+   432     28  in   coefficients  n np l k0 dx ker_type
+   432     28  out  coefficients  f
+   433     28  in   coefficients  n np l k0 dx ker_type
+   433     28  out  coefficients  f
+   434     28  in   coefficients  n np l k0 dx ker_type
+   434     28  out  coefficients  f
+   435     28  in   coefficients  n np l k0 dx ker_type
+   435     28  out  coefficients  f
+   436     28  in   coefficients  n np l k0 dx ker_type
+   436     28  out  coefficients  f
+   437     28  in   coefficients  n np l k0 dx ker_type
+   437     28  out  coefficients  f
+   438     28  in   coefficients  n np l k0 dx ker_type
+   438     28  out  coefficients  f
+   439     28  in   coefficients  n np l k0 dx ker_type
+   439     28  out  coefficients  f
+   440     28  in   coefficients  n np l k0 dx ker_type
+   440     28  out  coefficients  f
+   441     28  in   coefficients  n np l k0 dx ker_type
+   441     28  out  coefficients  f
+   442     28  in   coefficients  n np l k0 dx ker_type
+   442     28  out  coefficients  f
+   443     28  in   coefficients  n np l k0 dx ker_type
+   443     28  out  coefficients  f
+   444     28  in   coefficients  n np l k0 dx ker_type
+   444     28  out  coefficients  f
+   445     28  in   coefficients  n np l k0 dx ker_type
+   445     28  out  coefficients  f
+   446     28  in   coefficients  n np l k0 dx ker_type
+   446     28  out  coefficients  f
+   447     28  in   coefficients  n np l k0 dx ker_type
+   447     28  out  coefficients  f
+   448     28  in   coefficients  n np l k0 dx ker_type
+   448     28  out  coefficients  f
+   449     28  in   coefficients  n np l k0 dx ker_type
+   449     28  out  coefficients  f
+   450     28  in   coefficients  n np l k0 dx ker_type
+   450     28  out  coefficients  f
+   451     28  in   coefficients  n np l k0 dx ker_type
+   451     28  out  coefficients  f
+   452     28  in   coefficients  n np l k0 dx ker_type
+   452     28  out  coefficients  f
+   453     28  in   coefficients  n np l k0 dx ker_type
+   453     28  out  coefficients  f
+   454     28  in   coefficients  n np l k0 dx ker_type
+   454     28  out  coefficients  f
+   455     28  in   coefficients  n np l k0 dx ker_type
+   455     28  out  coefficients  f
+   456     28  in   coefficients  n np l k0 dx ker_type
+   456     28  out  coefficients  f
+   457     28  in   coefficients  n np l k0 dx ker_type
+   457     28  out  coefficients  f
+   458     28  in   coefficients  n np l k0 dx ker_type
+   458     28  out  coefficients  f
+   459     28  in   coefficients  n np l k0 dx ker_type
+   459     28  out  coefficients  f
+   460     28  in   coefficients  n np l k0 dx ker_type
+   460     28  out  coefficients  f
+   461     28  in   coefficients  n np l k0 dx ker_type
+   461     28  out  coefficients  f
+   462     28  in   coefficients  n np l k0 dx ker_type
+   462     28  out  coefficients  f
+   463     28  in   coefficients  n np l k0 dx ker_type
+   463     28  out  coefficients  f
+   464     28  in   coefficients  n np l k0 dx ker_type
+   464     28  out  coefficients  f
+   465     28  in   coefficients  n np l k0 dx ker_type
+   465     28  out  coefficients  f
+   466     28  in   coefficients  n np l k0 dx ker_type
+   466     28  out  coefficients  f
+   467     28  in   coefficients  n np l k0 dx ker_type
+   467     28  out  coefficients  f
+   468     28  in   coefficients  n np l k0 dx ker_type
+   468     28  out  coefficients  f
+   469     28  in   coefficients  n np l k0 dx ker_type
+   469     28  out  coefficients  f
+   470     28  in   coefficients  n np l k0 dx ker_type
+   470     28  out  coefficients  f
+   471     28  in   coefficients  n np l k0 dx ker_type
+   471     28  out  coefficients  f
+   472     28  in   coefficients  n np l k0 dx ker_type
+   472     28  out  coefficients  f
+   473     28  in   coefficients  n np l k0 dx ker_type
+   473     28  out  coefficients  f
+   474     28  in   coefficients  n np l k0 dx ker_type
+   474     28  out  coefficients  f
+   475     28  in   coefficients  n np l k0 dx ker_type
+   475     28  out  coefficients  f
+   476     28  in   coefficients  n np l k0 dx ker_type
+   476     28  out  coefficients  f
+   477     28  in   coefficients  n np l k0 dx ker_type
+   477     28  out  coefficients  f
+   478     28  in   coefficients  n np l k0 dx ker_type
+   478     28  out  coefficients  f
+   479     28  in   coefficients  n np l k0 dx ker_type
+   479     28  out  coefficients  f
+   480     28  in   coefficients  n np l k0 dx ker_type
+   480     28  out  coefficients  f
+   481     28  in   coefficients  n np l k0 dx ker_type
+   481     28  out  coefficients  f
+   482     28  in   coefficients  n np l k0 dx ker_type
+   482     28  out  coefficients  f
+   483     28  in   coefficients  n np l k0 dx ker_type
+   483     28  out  coefficients  f
+   484     28  in   coefficients  n np l k0 dx ker_type
+   484     28  out  coefficients  f
+   485     28  in   coefficients  n np l k0 dx ker_type
+   485     28  out  coefficients  f
+   486     28  in   coefficients  n np l k0 dx ker_type
+   486     28  out  coefficients  f
+   487     28  in   coefficients  n np l k0 dx ker_type
+   487     28  out  coefficients  f
+   488     28  in   coefficients  n np l k0 dx ker_type
+   488     28  out  coefficients  f
+   489     28  in   coefficients  n np l k0 dx ker_type
+   489     28  out  coefficients  f
+   490     28  in   coefficients  n np l k0 dx ker_type
+   490     28  out  coefficients  f
+   491     28  in   coefficients  n np l k0 dx ker_type
+   491     28  out  coefficients  f
+   492     28  in   coefficients  n np l k0 dx ker_type
+   492     28  out  coefficients  f
+   493     28  in   coefficients  n np l k0 dx ker_type
+   493     28  out  coefficients  f
+   494     28  in   coefficients  n np l k0 dx ker_type
+   494     28  out  coefficients  f
+   495     28  in   coefficients  n np l k0 dx ker_type
+   495     28  out  coefficients  f
+   496     28  in   coefficients  n np l k0 dx ker_type
+   496     28  out  coefficients  f
+   497     28  in   coefficients  n np l k0 dx ker_type
+   497     28  out  coefficients  f
+   498     28  in   coefficients  n np l k0 dx ker_type
+   498     28  out  coefficients  f
+   499     28  in   coefficients  n np l k0 dx ker_type
+   499     28  out  coefficients  f
+   500     28  in   coefficients  n np l k0 dx ker_type
+   500     28  out  coefficients  f
+   501     28  in   coefficients  n np l k0 dx ker_type
+   501     28  out  coefficients  f
+   502     28  in   coefficients  n np l k0 dx ker_type
+   502     28  out  coefficients  f
+   503     28  in   coefficients  n np l k0 dx ker_type
+   503     28  out  coefficients  f
+   504     28  in   coefficients  n np l k0 dx ker_type
+   504     28  out  coefficients  f
+   505     28  in   coefficients  n np l k0 dx ker_type
+   505     28  out  coefficients  f
+   506     28  in   coefficients  n np l k0 dx ker_type
+   506     28  out  coefficients  f
+   507     28  in   coefficients  n np l k0 dx ker_type
+   507     28  out  coefficients  f
+   508     28  in   coefficients  n np l k0 dx ker_type
+   508     28  out  coefficients  f
+   509     28  in   coefficients  n np l k0 dx ker_type
+   509     28  out  coefficients  f
+   510     28  in   coefficients  n np l k0 dx ker_type
+   510     28  out  coefficients  f
+   511     28  in   coefficients  n np l k0 dx ker_type
+   511     28  out  coefficients  f
+   512     28  in   coefficients  n np l k0 dx ker_type
+   512     28  out  coefficients  f
+   513     28  in   coefficients  n np l k0 dx ker_type
+   513     28  out  coefficients  f
+   514     28  in   coefficients  n np l k0 dx ker_type
+   514     28  out  coefficients  f
+   515     28  in   coefficients  n np l k0 dx ker_type
+   515     28  out  coefficients  f
+   516     28  in   coefficients  n np l k0 dx ker_type
+   516     28  out  coefficients  f
+   517     28  in   coefficients  n np l k0 dx ker_type
+   517     28  out  coefficients  f
+   518     28  in   coefficients  n np l k0 dx ker_type
+   518     28  out  coefficients  f
+   519     28  in   coefficients  n np l k0 dx ker_type
+   519     28  out  coefficients  f
+   520     28  in   coefficients  n np l k0 dx ker_type
+   520     28  out  coefficients  f
+   521     28  in   coefficients  n np l k0 dx ker_type
+   521     28  out  coefficients  f
+   522     28  in   coefficients  n np l k0 dx ker_type
+   522     28  out  coefficients  f
+   523     28  in   coefficients  n np l k0 dx ker_type
+   523     28  out  coefficients  f
+   524     28  in   coefficients  n np l k0 dx ker_type
+   524     28  out  coefficients  f
+   525     28  in   coefficients  n np l k0 dx ker_type
+   525     28  out  coefficients  f
+   526     28  in   coefficients  n np l k0 dx ker_type
+   526     28  out  coefficients  f
+   527     28  in   coefficients  n np l k0 dx ker_type
+   527     28  out  coefficients  f
+   528     28  in   coefficients  n np l k0 dx ker_type
+   528     28  out  coefficients  f
+   529     28  in   coefficients  n np l k0 dx ker_type
+   529     28  out  coefficients  f
+   530     28  in   coefficients  n np l k0 dx ker_type
+   530     28  out  coefficients  f
+   531     28  in   coefficients  n np l k0 dx ker_type
+   531     28  out  coefficients  f
+   532     28  in   coefficients  n np l k0 dx ker_type
+   532     28  out  coefficients  f
+   533     28  in   coefficients  n np l k0 dx ker_type
+   533     28  out  coefficients  f
+   534     28  in   coefficients  n np l k0 dx ker_type
+   534     28  out  coefficients  f
+   535     28  in   coefficients  n np l k0 dx ker_type
+   535     28  out  coefficients  f
+   536     28  in   coefficients  n np l k0 dx ker_type
+   536     28  out  coefficients  f
+   537     28  in   coefficients  n np l k0 dx ker_type
+   537     28  out  coefficients  f
+   538     28  in   coefficients  n np l k0 dx ker_type
+   538     28  out  coefficients  f
+   539     28  in   coefficients  n np l k0 dx ker_type
+   539     28  out  coefficients  f
+   540     28  in   coefficients  n np l k0 dx ker_type
+   540     28  out  coefficients  f
+   541     28  in   coefficients  n np l k0 dx ker_type
+   541     28  out  coefficients  f
+   542     28  in   coefficients  n np l k0 dx ker_type
+   542     28  out  coefficients  f
+   543     28  in   coefficients  n np l k0 dx ker_type
+   543     28  out  coefficients  f
+   544     28  in   coefficients  n np l k0 dx ker_type
+   544     28  out  coefficients  f
+   545     28  in   coefficients  n np l k0 dx ker_type
+   545     28  out  coefficients  f
+   546     28  in   coefficients  n np l k0 dx ker_type
+   546     28  out  coefficients  f
+   547     28  in   coefficients  n np l k0 dx ker_type
+   547     28  out  coefficients  f
+   548     28  in   coefficients  n np l k0 dx ker_type
+   548     28  out  coefficients  f
+   549     28  in   coefficients  n np l k0 dx ker_type
+   549     28  out  coefficients  f
+   550     28  in   coefficients  n np l k0 dx ker_type
+   550     28  out  coefficients  f
+   551     28  in   coefficients  n np l k0 dx ker_type
+   551     28  out  coefficients  f
+   552     28  in   coefficients  n np l k0 dx ker_type
+   552     28  out  coefficients  f
+   553     28  in   coefficients  n np l k0 dx ker_type
+   553     28  out  coefficients  f
+   554     28  in   coefficients  n np l k0 dx ker_type
+   554     28  out  coefficients  f
+   555     28  in   coefficients  n np l k0 dx ker_type
+   555     28  out  coefficients  f
+   556     28  in   coefficients  n np l k0 dx ker_type
+   556     28  out  coefficients  f
+   557     28  in   coefficients  n np l k0 dx ker_type
+   557     28  out  coefficients  f
+   558     28  in   coefficients  n np l k0 dx ker_type
+   558     28  out  coefficients  f
+   559     28  in   coefficients  n np l k0 dx ker_type
+   559     28  out  coefficients  f
+   560     28  in   coefficients  n np l k0 dx ker_type
+   560     28  out  coefficients  f
+   561     28  in   coefficients  n np l k0 dx ker_type
+   561     28  out  coefficients  f
+   562     28  in   coefficients  n np l k0 dx ker_type
+   562     28  out  coefficients  f
+   563     28  in   coefficients  n np l k0 dx ker_type
+   563     28  out  coefficients  f
+   564     28  in   coefficients  n np l k0 dx ker_type
+   564     28  out  coefficients  f
+   565     28  in   coefficients  n np l k0 dx ker_type
+   565     28  out  coefficients  f
+   566     28  in   coefficients  n np l k0 dx ker_type
+   566     28  out  coefficients  f
+   567     28  in   coefficients  n np l k0 dx ker_type
+   567     28  out  coefficients  f
+   568     28  in   coefficients  n np l k0 dx ker_type
+   568     28  out  coefficients  f
+   569     28  in   coefficients  n np l k0 dx ker_type
+   569     28  out  coefficients  f
+   570     28  in   coefficients  n np l k0 dx ker_type
+   570     28  out  coefficients  f
+   571     28  in   coefficients  n np l k0 dx ker_type
+   571     28  out  coefficients  f
+   572     28  in   coefficients  n np l k0 dx ker_type
+   572     28  out  coefficients  f
+   573     28  in   coefficients  n np l k0 dx ker_type
+   573     28  out  coefficients  f
+   574     28  in   coefficients  n np l k0 dx ker_type
+   574     28  out  coefficients  f
+   575     28  in   coefficients  n np l k0 dx ker_type
+   575     28  out  coefficients  f
+   576     28  in   coefficients  n np l k0 dx ker_type
+   576     28  out  coefficients  f
+   577     28  in   coefficients  n np l k0 dx ker_type
+   577     28  out  coefficients  f
+   578     28  in   coefficients  n np l k0 dx ker_type
+   578     28  out  coefficients  f
+   579     28  in   coefficients  n np l k0 dx ker_type
+   579     28  out  coefficients  f
+   580     28  in   coefficients  n np l k0 dx ker_type
+   580     28  out  coefficients  f
+   581     28  in   coefficients  n np l k0 dx ker_type
+   581     28  out  coefficients  f
+   582     28  in   coefficients  n np l k0 dx ker_type
+   582     28  out  coefficients  f
+   583     28  in   coefficients  n np l k0 dx ker_type
+   583     28  out  coefficients  f
+   584     28  in   coefficients  n np l k0 dx ker_type
+   584     28  out  coefficients  f
+   585     28  in   coefficients  n np l k0 dx ker_type
+   585     28  out  coefficients  f
+   586     28  in   coefficients  n np l k0 dx ker_type
+   586     28  out  coefficients  f
+   587     28  in   coefficients  n np l k0 dx ker_type
+   587     28  out  coefficients  f
+   588     28  in   coefficients  n np l k0 dx ker_type
+   588     28  out  coefficients  f
+   589     28  in   coefficients  n np l k0 dx ker_type
+   589     28  out  coefficients  f
+   590     28  in   coefficients  n np l k0 dx ker_type
+   590     28  out  coefficients  f
+   591     28  in   coefficients  n np l k0 dx ker_type
+   591     28  out  coefficients  f
+   592     28  in   coefficients  n np l k0 dx ker_type
+   592     28  out  coefficients  f
+   593     28  in   coefficients  n np l k0 dx ker_type
+   593     28  out  coefficients  f
+   594     28  in   coefficients  n np l k0 dx ker_type
+   594     28  out  coefficients  f
+   595     28  in   coefficients  n np l k0 dx ker_type
+   595     28  out  coefficients  f
+   596     28  in   coefficients  n np l k0 dx ker_type
+   596     28  out  coefficients  f
+   597     28  in   coefficients  n np l k0 dx ker_type
+   597     28  out  coefficients  f
+   598     28  in   coefficients  n np l k0 dx ker_type
+   598     28  out  coefficients  f
+   599     28  in   coefficients  n np l k0 dx ker_type
+   599     28  out  coefficients  f
+   600     28  in   coefficients  n np l k0 dx ker_type
+   600     28  out  coefficients  f
+   601     28  in   coefficients  n np l k0 dx ker_type
+   601     28  out  coefficients  f
+   602     28  in   coefficients  n np l k0 dx ker_type
+   602     28  out  coefficients  f
+   603     28  in   coefficients  n np l k0 dx ker_type
+   603     28  out  coefficients  f
+   604     28  in   coefficients  n np l k0 dx ker_type
+   604     28  out  coefficients  f
+   605     28  in   coefficients  n np l k0 dx ker_type
+   605     28  out  coefficients  f
+   606     28  in   coefficients  n np l k0 dx ker_type
+   606     28  out  coefficients  f
+   607     28  in   coefficients  n np l k0 dx ker_type
+   607     28  out  coefficients  f
+   608     28  in   coefficients  n np l k0 dx ker_type
+   608     28  out  coefficients  f
+   609     28  in   coefficients  n np l k0 dx ker_type
+   609     28  out  coefficients  f
+   610     28  in   coefficients  n np l k0 dx ker_type
+   610     28  out  coefficients  f
+   611     28  in   coefficients  n np l k0 dx ker_type
+   611     28  out  coefficients  f
+   612     28  in   coefficients  n np l k0 dx ker_type
+   612     28  out  coefficients  f
+   613     28  in   coefficients  n np l k0 dx ker_type
+   613     28  out  coefficients  f
+   614     28  in   coefficients  n np l k0 dx ker_type
+   614     28  out  coefficients  f
+   615     28  in   coefficients  n np l k0 dx ker_type
+   615     28  out  coefficients  f
+   616     28  in   coefficients  n np l k0 dx ker_type
+   616     28  out  coefficients  f
+   617     28  in   coefficients  n np l k0 dx ker_type
+   617     28  out  coefficients  f
+   618     28  in   coefficients  n np l k0 dx ker_type
+   618     28  out  coefficients  f
+   619     28  in   coefficients  n np l k0 dx ker_type
+   619     28  out  coefficients  f
+   620     28  in   coefficients  n np l k0 dx ker_type
+   620     28  out  coefficients  f
+   621     28  in   coefficients  n np l k0 dx ker_type
+   621     28  out  coefficients  f
+   622     28  in   coefficients  n np l k0 dx ker_type
+   622     28  out  coefficients  f
+   623     28  in   coefficients  n np l k0 dx ker_type
+   623     28  out  coefficients  f
+   624     28  in   coefficients  n np l k0 dx ker_type
+   624     28  out  coefficients  f
+   625     28  in   coefficients  n np l k0 dx ker_type
+   625     28  out  coefficients  f
+   626     28  in   coefficients  n np l k0 dx ker_type
+   626     28  out  coefficients  f
+   627     28  in   coefficients  n np l k0 dx ker_type
+   627     28  out  coefficients  f
+   628     28  in   coefficients  n np l k0 dx ker_type
+   628     28  out  coefficients  f
+   629     28  in   coefficients  n np l k0 dx ker_type
+   629     28  out  coefficients  f
+   630     28  in   coefficients  n np l k0 dx ker_type
+   630     28  out  coefficients  f
+   631     28  in   coefficients  n np l k0 dx ker_type
+   631     28  out  coefficients  f
+   632     28  in   coefficients  n np l k0 dx ker_type
+   632     28  out  coefficients  f
+   633     28  in   coefficients  n np l k0 dx ker_type
+   633     28  out  coefficients  f
+   634     28  in   coefficients  n np l k0 dx ker_type
+   634     28  out  coefficients  f
+   635     28  in   coefficients  n np l k0 dx ker_type
+   635     28  out  coefficients  f
+   636     28  in   coefficients  n np l k0 dx ker_type
+   636     28  out  coefficients  f
+   637     28  in   coefficients  n np l k0 dx ker_type
+   637     28  out  coefficients  f
+   638     28  in   coefficients  n np l k0 dx ker_type
+   638     28  out  coefficients  f
+   639     28  in   coefficients  n np l k0 dx ker_type
+   639     28  out  coefficients  f
+   640     28  in   coefficients  n np l k0 dx ker_type
+   640     28  out  coefficients  f
+   641     28  in   coefficients  n np l k0 dx ker_type
+   641     28  out  coefficients  f
+   642     28  in   coefficients  n np l k0 dx ker_type
+   642     28  out  coefficients  f
+   643     28  in   coefficients  n np l k0 dx ker_type
+   643     28  out  coefficients  f
+   644     28  in   coefficients  n np l k0 dx ker_type
+   644     28  out  coefficients  f
+   645     28  in   coefficients  n np l k0 dx ker_type
+   645     28  out  coefficients  f
+   646     28  in   coefficients  n np l k0 dx ker_type
+   646     28  out  coefficients  f
+   647     28  in   coefficients  n np l k0 dx ker_type
+   647     28  out  coefficients  f
+   648     28  in   coefficients  n np l k0 dx ker_type
+   648     28  out  coefficients  f
+   649     28  in   coefficients  n np l k0 dx ker_type
+   649     28  out  coefficients  f
+   650     28  in   coefficients  n np l k0 dx ker_type
+   650     28  out  coefficients  f
+   651     28  in   coefficients  n np l k0 dx ker_type
+   651     28  out  coefficients  f
+   652     28  in   coefficients  n np l k0 dx ker_type
+   652     28  out  coefficients  f
+   653     28  in   coefficients  n np l k0 dx ker_type
+   653     28  out  coefficients  f
+   654     28  in   coefficients  n np l k0 dx ker_type
+   654     28  out  coefficients  f
+   655     28  in   coefficients  n np l k0 dx ker_type
+   655     28  out  coefficients  f
+   656     28  in   coefficients  n np l k0 dx ker_type
+   656     28  out  coefficients  f
+   657     28  in   coefficients  n np l k0 dx ker_type
+   657     28  out  coefficients  f
+   658     28  in   coefficients  n np l k0 dx ker_type
+   658     28  out  coefficients  f
+   659     28  in   coefficients  n np l k0 dx ker_type
+   659     28  out  coefficients  f
+   660     28  in   coefficients  n np l k0 dx ker_type
+   660     28  out  coefficients  f
+   661     28  in   coefficients  n np l k0 dx ker_type
+   661     28  out  coefficients  f
+   662     28  in   coefficients  n np l k0 dx ker_type
+   662     28  out  coefficients  f
+   663     28  in   coefficients  n np l k0 dx ker_type
+   663     28  out  coefficients  f
+   664     28  in   coefficients  n np l k0 dx ker_type
+   664     28  out  coefficients  f
+   665     28  in   coefficients  n np l k0 dx ker_type
+   665     28  out  coefficients  f
+   666     28  in   coefficients  n np l k0 dx ker_type
+   666     28  out  coefficients  f
+   667     28  in   coefficients  n np l k0 dx ker_type
+   667     28  out  coefficients  f
+   668     28  in   coefficients  n np l k0 dx ker_type
+   668     28  out  coefficients  f
+   669     28  in   coefficients  n np l k0 dx ker_type
+   669     28  out  coefficients  f
+   670     28  in   coefficients  n np l k0 dx ker_type
+   670     28  out  coefficients  f
+   671     28  in   coefficients  n np l k0 dx ker_type
+   671     28  out  coefficients  f
+   672     28  in   coefficients  n np l k0 dx ker_type
+   672     28  out  coefficients  f
+   673     28  in   coefficients  n np l k0 dx ker_type
+   673     28  out  coefficients  f
+   674     28  in   coefficients  n np l k0 dx ker_type
+   674     28  out  coefficients  f
+   675     28  in   coefficients  n np l k0 dx ker_type
+   675     28  out  coefficients  f
+   676     28  in   coefficients  n np l k0 dx ker_type
+   676     28  out  coefficients  f
+   677     28  in   coefficients  n np l k0 dx ker_type
+   677     28  out  coefficients  f
+   678     28  in   coefficients  n np l k0 dx ker_type
+   678     28  out  coefficients  f
+   679     28  in   coefficients  n np l k0 dx ker_type
+   679     28  out  coefficients  f
+   680     28  in   coefficients  n np l k0 dx ker_type
+   680     28  out  coefficients  f
+   681     28  in   coefficients  n np l k0 dx ker_type
+   681     28  out  coefficients  f
+   682     28  in   coefficients  n np l k0 dx ker_type
+   682     28  out  coefficients  f
+   683     28  in   coefficients  n np l k0 dx ker_type
+   683     28  out  coefficients  f
+   684     28  in   coefficients  n np l k0 dx ker_type
+   684     28  out  coefficients  f
+   685     28  in   coefficients  n np l k0 dx ker_type
+   685     28  out  coefficients  f
+   686     28  in   coefficients  n np l k0 dx ker_type
+   686     28  out  coefficients  f
+   687     28  in   coefficients  n np l k0 dx ker_type
+   687     28  out  coefficients  f
+   688     28  in   coefficients  n np l k0 dx ker_type
+   688     28  out  coefficients  f
+   689     28  in   coefficients  n np l k0 dx ker_type
+   689     28  out  coefficients  f
+   690     28  in   coefficients  n np l k0 dx ker_type
+   690     28  out  coefficients  f
+   691     28  in   coefficients  n np l k0 dx ker_type
+   691     28  out  coefficients  f
+   692     28  in   coefficients  n np l k0 dx ker_type
+   692     28  out  coefficients  f
+   693     28  in   coefficients  n np l k0 dx ker_type
+   693     28  out  coefficients  f
+   694     28  in   coefficients  n np l k0 dx ker_type
+   694     28  out  coefficients  f
+   695     28  in   coefficients  n np l k0 dx ker_type
+   695     28  out  coefficients  f
+   696     28  in   coefficients  n np l k0 dx ker_type
+   696     28  out  coefficients  f
+   697     28  in   coefficients  n np l k0 dx ker_type
+   697     28  out  coefficients  f
+   698     28  in   coefficients  n np l k0 dx ker_type
+   698     28  out  coefficients  f
+   699     28  in   coefficients  n np l k0 dx ker_type
+   699     28  out  coefficients  f
+   700     28  in   coefficients  n np l k0 dx ker_type
+   700     28  out  coefficients  f
+   701     28  in   coefficients  n np l k0 dx ker_type
+   701     28  out  coefficients  f
+   702     28  in   coefficients  n np l k0 dx ker_type
+   702     28  out  coefficients  f
+   703     28  in   coefficients  n np l k0 dx ker_type
+   703     28  out  coefficients  f
+   704     28  in   coefficients  n np l k0 dx ker_type
+   704     28  out  coefficients  f
+   705     28  in   coefficients  n np l k0 dx ker_type
+   705     28  out  coefficients  f
+   706     28  in   coefficients  n np l k0 dx ker_type
+   706     28  out  coefficients  f
+   707     28  in   coefficients  n np l k0 dx ker_type
+   707     28  out  coefficients  f
+   708     28  in   coefficients  n np l k0 dx ker_type
+   708     28  out  coefficients  f
+   709     28  in   coefficients  n np l k0 dx ker_type
+   709     28  out  coefficients  f
+   710     28  in   coefficients  n np l k0 dx ker_type
+   710     28  out  coefficients  f
+   711     28  in   coefficients  n np l k0 dx ker_type
+   711     28  out  coefficients  f
+   712     28  in   coefficients  n np l k0 dx ker_type
+   712     28  out  coefficients  f
+   713     28  in   coefficients  n np l k0 dx ker_type
+   713     28  out  coefficients  f
+   714     28  in   coefficients  n np l k0 dx ker_type
+   714     28  out  coefficients  f
+   715     28  in   coefficients  n np l k0 dx ker_type
+   715     28  out  coefficients  f
+   716     28  in   coefficients  n np l k0 dx ker_type
+   716     28  out  coefficients  f
+   717     28  in   coefficients  n np l k0 dx ker_type
+   717     28  out  coefficients  f
+   718     28  in   coefficients  n np l k0 dx ker_type
+   718     28  out  coefficients  f
+   719     28  in   coefficients  n np l k0 dx ker_type
+   719     28  out  coefficients  f
+   720     28  in   coefficients  n np l k0 dx ker_type
+   720     28  out  coefficients  f
+   721     28  in   coefficients  n np l k0 dx ker_type
+   721     28  out  coefficients  f
+   722     28  in   coefficients  n np l k0 dx ker_type
+   722     28  out  coefficients  f
+   723     28  in   coefficients  n np l k0 dx ker_type
+   723     28  out  coefficients  f
+   724     28  in   coefficients  n np l k0 dx ker_type
+   724     28  out  coefficients  f
+   725     28  in   coefficients  n np l k0 dx ker_type
+   725     28  out  coefficients  f
+   726     28  in   coefficients  n np l k0 dx ker_type
+   726     28  out  coefficients  f
+   727     28  in   coefficients  n np l k0 dx ker_type
+   727     28  out  coefficients  f
+   728     28  in   coefficients  n np l k0 dx ker_type
+   728     28  out  coefficients  f
+   729     28  in   coefficients  n np l k0 dx ker_type
+   729     28  out  coefficients  f
+   730     28  in   coefficients  n np l k0 dx ker_type
+   730     28  out  coefficients  f
+   731     28  in   coefficients  n np l k0 dx ker_type
+   731     28  out  coefficients  f
+   732     28  in   coefficients  n np l k0 dx ker_type
+   732     28  out  coefficients  f
+   733     28  in   coefficients  n np l k0 dx ker_type
+   733     28  out  coefficients  f
+   734     28  in   coefficients  n np l k0 dx ker_type
+   734     28  out  coefficients  f
+   735     28  in   coefficients  n np l k0 dx ker_type
+   735     28  out  coefficients  f
+   736     28  in   coefficients  n np l k0 dx ker_type
+   736     28  out  coefficients  f
+   737     28  in   coefficients  n np l k0 dx ker_type
+   737     28  out  coefficients  f
+   738     28  in   coefficients  n np l k0 dx ker_type
+   738     28  out  coefficients  f
+   739     28  in   coefficients  n np l k0 dx ker_type
+   739     28  out  coefficients  f
+   740     28  in   coefficients  n np l k0 dx ker_type
+   740     28  out  coefficients  f
+   741     28  in   coefficients  n np l k0 dx ker_type
+   741     28  out  coefficients  f
+   742     28  in   coefficients  n np l k0 dx ker_type
+   742     28  out  coefficients  f
+   743     28  in   coefficients  n np l k0 dx ker_type
+   743     28  out  coefficients  f
+   744     28  in   coefficients  n np l k0 dx ker_type
+   744     28  out  coefficients  f
+   745     28  in   coefficients  n np l k0 dx ker_type
+   745     28  out  coefficients  f
+   746     28  in   coefficients  n np l k0 dx ker_type
+   746     28  out  coefficients  f
+   747     28  in   coefficients  n np l k0 dx ker_type
+   747     28  out  coefficients  f
+   748     28  in   coefficients  n np l k0 dx ker_type
+   748     28  out  coefficients  f
+   749     28  in   coefficients  n np l k0 dx ker_type
+   749     28  out  coefficients  f
+   750     28  in   coefficients  n np l k0 dx ker_type
+   750     28  out  coefficients  f
+   751     28  in   coefficients  n np l k0 dx ker_type
+   751     28  out  coefficients  f
+   752     28  in   coefficients  n np l k0 dx ker_type
+   752     28  out  coefficients  f
+   753     28  in   coefficients  n np l k0 dx ker_type
+   753     28  out  coefficients  f
+   754     28  in   coefficients  n np l k0 dx ker_type
+   754     28  out  coefficients  f
+   755     28  in   coefficients  n np l k0 dx ker_type
+   755     28  out  coefficients  f
+   756     28  in   coefficients  n np l k0 dx ker_type
+   756     28  out  coefficients  f
+   757     28  in   coefficients  n np l k0 dx ker_type
+   757     28  out  coefficients  f
+   758     28  in   coefficients  n np l k0 dx ker_type
+   758     28  out  coefficients  f
+   759     28  in   coefficients  n np l k0 dx ker_type
+   759     28  out  coefficients  f
+   760     28  in   coefficients  n np l k0 dx ker_type
+   760     28  out  coefficients  f
+   761     28  in   coefficients  n np l k0 dx ker_type
+   761     28  out  coefficients  f
+   762     28  in   coefficients  n np l k0 dx ker_type
+   762     28  out  coefficients  f
+   763     28  in   coefficients  n np l k0 dx ker_type
+   763     28  out  coefficients  f
+   764     28  in   coefficients  n np l k0 dx ker_type
+   764     28  out  coefficients  f
+   765     28  in   coefficients  n np l k0 dx ker_type
+   765     28  out  coefficients  f
+   766     28  in   coefficients  n np l k0 dx ker_type
+   766     28  out  coefficients  f
+   767     28  in   coefficients  n np l k0 dx ker_type
+   767     28  out  coefficients  f
+   768     28  in   coefficients  n np l k0 dx ker_type
+   768     28  out  coefficients  f
+   769     28  in   coefficients  n np l k0 dx ker_type
+   769     28  out  coefficients  f
+   770     28  in   coefficients  n np l k0 dx ker_type
+   770     28  out  coefficients  f
+   771     28  in   coefficients  n np l k0 dx ker_type
+   771     28  out  coefficients  f
+   772     28  in   coefficients  n np l k0 dx ker_type
+   772     28  out  coefficients  f
+   773     28  in   coefficients  n np l k0 dx ker_type
+   773     28  out  coefficients  f
+   774     28  in   coefficients  n np l k0 dx ker_type
+   774     28  out  coefficients  f
+   775     28  in   coefficients  n np l k0 dx ker_type
+   775     28  out  coefficients  f
+   776     28  in   coefficients  n np l k0 dx ker_type
+   776     28  out  coefficients  f
+   777     28  in   coefficients  n np l k0 dx ker_type
+   777     28  out  coefficients  f
+   778     28  in   coefficients  n np l k0 dx ker_type
+   778     28  out  coefficients  f
+   779     28  in   coefficients  n np l k0 dx ker_type
+   779     28  out  coefficients  f
+   780     28  in   coefficients  n np l k0 dx ker_type
+   780     28  out  coefficients  f
+   781     28  in   coefficients  n np l k0 dx ker_type
+   781     28  out  coefficients  f
+   782     28  in   coefficients  n np l k0 dx ker_type
+   782     28  out  coefficients  f
+   783     28  in   coefficients  n np l k0 dx ker_type
+   783     28  out  coefficients  f
+   784     28  in   coefficients  n np l k0 dx ker_type
+   784     28  out  coefficients  f
+   785     28  in   coefficients  n np l k0 dx ker_type
+   785     28  out  coefficients  f
+   786     28  in   coefficients  n np l k0 dx ker_type
+   786     28  out  coefficients  f
+   787     28  in   coefficients  n np l k0 dx ker_type
+   787     28  out  coefficients  f
+   788     28  in   coefficients  n np l k0 dx ker_type
+   788     28  out  coefficients  f
+   789     28  in   coefficients  n np l k0 dx ker_type
+   789     28  out  coefficients  f
+   790     28  in   coefficients  n np l k0 dx ker_type
+   790     28  out  coefficients  f
+   791     28  in   coefficients  n np l k0 dx ker_type
+   791     28  out  coefficients  f
+   792     28  in   coefficients  n np l k0 dx ker_type
+   792     28  out  coefficients  f
+   793     28  in   coefficients  n np l k0 dx ker_type
+   793     28  out  coefficients  f
+   794     28  in   coefficients  n np l k0 dx ker_type
+   794     28  out  coefficients  f
+   795     28  in   coefficients  n np l k0 dx ker_type
+   795     28  out  coefficients  f
+   796     28  in   coefficients  n np l k0 dx ker_type
+   796     28  out  coefficients  f
+   797     28  in   coefficients  n np l k0 dx ker_type
+   797     28  out  coefficients  f
+   798     28  in   coefficients  n np l k0 dx ker_type
+   798     28  out  coefficients  f
+   799     28  in   coefficients  n np l k0 dx ker_type
+   799     28  out  coefficients  f
+   800     28  in   coefficients  n np l k0 dx ker_type
+   800     28  out  coefficients  f
+   801     28  in   coefficients  n np l k0 dx ker_type
+   801     28  out  coefficients  f
+   802     28  in   coefficients  n np l k0 dx ker_type
+   802     28  out  coefficients  f
+   803     28  in   coefficients  n np l k0 dx ker_type
+   803     28  out  coefficients  f
+   804     28  in   coefficients  n np l k0 dx ker_type
+   804     28  out  coefficients  f
+   805     28  in   coefficients  n np l k0 dx ker_type
+   805     28  out  coefficients  f
+   806     28  in   coefficients  n np l k0 dx ker_type
+   806     28  out  coefficients  f
+   807     28  in   coefficients  n np l k0 dx ker_type
+   807     28  out  coefficients  f
+   808     28  in   coefficients  n np l k0 dx ker_type
+   808     28  out  coefficients  f
+   809     28  in   coefficients  n np l k0 dx ker_type
+   809     28  out  coefficients  f
+   810     28  in   coefficients  n np l k0 dx ker_type
+   810     28  out  coefficients  f
+   811     28  in   coefficients  n np l k0 dx ker_type
+   811     28  out  coefficients  f
+   812     28  in   coefficients  n np l k0 dx ker_type
+   812     28  out  coefficients  f
+   813     28  in   coefficients  n np l k0 dx ker_type
+   813     28  out  coefficients  f
+   814     28  in   coefficients  n np l k0 dx ker_type
+   814     28  out  coefficients  f
+   815     28  in   coefficients  n np l k0 dx ker_type
+   815     28  out  coefficients  f
+   816     28  in   coefficients  n np l k0 dx ker_type
+   816     28  out  coefficients  f
+   817     28  in   coefficients  n np l k0 dx ker_type
+   817     28  out  coefficients  f
+   818     28  in   coefficients  n np l k0 dx ker_type
+   818     28  out  coefficients  f
+   819     28  in   coefficients  n np l k0 dx ker_type
+   819     28  out  coefficients  f
+   820     28  in   coefficients  n np l k0 dx ker_type
+   820     28  out  coefficients  f
+   821     28  in   coefficients  n np l k0 dx ker_type
+   821     28  out  coefficients  f
+   822     28  in   coefficients  n np l k0 dx ker_type
+   822     28  out  coefficients  f
+   823     28  in   coefficients  n np l k0 dx ker_type
+   823     28  out  coefficients  f
+   824     28  in   coefficients  n np l k0 dx ker_type
+   824     28  out  coefficients  f
+   825     28  in   coefficients  n np l k0 dx ker_type
+   825     28  out  coefficients  f
+   826     28  in   coefficients  n np l k0 dx ker_type
+   826     28  out  coefficients  f
+   827     28  in   coefficients  n np l k0 dx ker_type
+   827     28  out  coefficients  f
+   828     28  in   coefficients  n np l k0 dx ker_type
+   828     28  out  coefficients  f
+   829     28  in   coefficients  n np l k0 dx ker_type
+   829     28  out  coefficients  f
+   830     28  in   coefficients  n np l k0 dx ker_type
+   830     28  out  coefficients  f
+   831     28  in   coefficients  n np l k0 dx ker_type
+   831     28  out  coefficients  f
+   832     28  in   coefficients  n np l k0 dx ker_type
+   832     28  out  coefficients  f
+   833     28  in   coefficients  n np l k0 dx ker_type
+   833     28  out  coefficients  f
+   834     28  in   coefficients  n np l k0 dx ker_type
+   834     28  out  coefficients  f
+   835     28  in   coefficients  n np l k0 dx ker_type
+   835     28  out  coefficients  f
+   836     28  in   coefficients  n np l k0 dx ker_type
+   836     28  out  coefficients  f
+   837     28  in   coefficients  n np l k0 dx ker_type
+   837     28  out  coefficients  f
+   838     28  in   coefficients  n np l k0 dx ker_type
+   838     28  out  coefficients  f
+   839     28  in   coefficients  n np l k0 dx ker_type
+   839     28  out  coefficients  f
+   840     28  in   coefficients  n np l k0 dx ker_type
+   840     28  out  coefficients  f
+   841     28  in   coefficients  n np l k0 dx ker_type
+   841     28  out  coefficients  f
+   842     28  in   coefficients  n np l k0 dx ker_type
+   842     28  out  coefficients  f
+   843     28  in   coefficients  n np l k0 dx ker_type
+   843     28  out  coefficients  f
+   844     28  in   coefficients  n np l k0 dx ker_type
+   844     28  out  coefficients  f
+   845     28  in   coefficients  n np l k0 dx ker_type
+   845     28  out  coefficients  f
+   846     28  in   coefficients  n np l k0 dx ker_type
+   846     28  out  coefficients  f
+   847     28  in   coefficients  n np l k0 dx ker_type
+   847     28  out  coefficients  f
+   848     28  in   coefficients  n np l k0 dx ker_type
+   848     28  out  coefficients  f
+   849     28  in   coefficients  n np l k0 dx ker_type
+   849     28  out  coefficients  f
+   850     28  in   coefficients  n np l k0 dx ker_type
+   850     28  out  coefficients  f
+   851     28  in   coefficients  n np l k0 dx ker_type
+   851     28  out  coefficients  f
+   852     28  in   coefficients  n np l k0 dx ker_type
+   852     28  out  coefficients  f
+   853     28  in   coefficients  n np l k0 dx ker_type
+   853     28  out  coefficients  f
+   854     28  in   coefficients  n np l k0 dx ker_type
+   854     28  out  coefficients  f
+   855     28  in   coefficients  n np l k0 dx ker_type
+   855     28  out  coefficients  f
+   856     28  in   coefficients  n np l k0 dx ker_type
+   856     28  out  coefficients  f
+   857     28  in   coefficients  n np l k0 dx ker_type
+   857     28  out  coefficients  f
+   858     28  in   coefficients  n np l k0 dx ker_type
+   858     28  out  coefficients  f
+   859     28  in   coefficients  n np l k0 dx ker_type
+   859     28  out  coefficients  f
+   860     28  in   coefficients  n np l k0 dx ker_type
+   860     28  out  coefficients  f
+   861     28  in   coefficients  n np l k0 dx ker_type
+   861     28  out  coefficients  f
+   862     28  in   coefficients  n np l k0 dx ker_type
+   862     28  out  coefficients  f
+   863     28  in   coefficients  n np l k0 dx ker_type
+   863     28  out  coefficients  f
+   864     28  in   coefficients  n np l k0 dx ker_type
+   864     28  out  coefficients  f
+   865     28  in   coefficients  n np l k0 dx ker_type
+   865     28  out  coefficients  f
+   866     28  in   coefficients  n np l k0 dx ker_type
+   866     28  out  coefficients  f
+   867     28  in   coefficients  n np l k0 dx ker_type
+   867     28  out  coefficients  f
+   868     28  in   coefficients  n np l k0 dx ker_type
+   868     28  out  coefficients  f
+   869     28  in   coefficients  n np l k0 dx ker_type
+   869     28  out  coefficients  f
+   870     28  in   coefficients  n np l k0 dx ker_type
+   870     28  out  coefficients  f
+   871     28  in   coefficients  n np l k0 dx ker_type
+   871     28  out  coefficients  f
+   872     28  in   coefficients  n np l k0 dx ker_type
+   872     28  out  coefficients  f
+   873     28  in   coefficients  n np l k0 dx ker_type
+   873     28  out  coefficients  f
+   874     28  in   coefficients  n np l k0 dx ker_type
+   874     28  out  coefficients  f
+   875     28  in   coefficients  n np l k0 dx ker_type
+   875     28  out  coefficients  f
+   876     28  in   coefficients  n np l k0 dx ker_type
+   876     28  out  coefficients  f
+   877     28  in   coefficients  n np l k0 dx ker_type
+   877     28  out  coefficients  f
+   878     28  in   coefficients  n np l k0 dx ker_type
+   878     28  out  coefficients  f
+   879     28  in   coefficients  n np l k0 dx ker_type
+   879     28  out  coefficients  f
+   880     28  in   coefficients  n np l k0 dx ker_type
+   880     28  out  coefficients  f
+   881     28  in   coefficients  n np l k0 dx ker_type
+   881     28  out  coefficients  f
+   882     28  in   coefficients  n np l k0 dx ker_type
+   882     28  out  coefficients  f
+   883     28  in   coefficients  n np l k0 dx ker_type
+   883     28  out  coefficients  f
+   884     28  in   coefficients  n np l k0 dx ker_type
+   884     28  out  coefficients  f
+   885     28  in   coefficients  n np l k0 dx ker_type
+   885     28  out  coefficients  f
+   886     28  in   coefficients  n np l k0 dx ker_type
+   886     28  out  coefficients  f
+   887     28  in   coefficients  n np l k0 dx ker_type
+   887     28  out  coefficients  f
+   888     28  in   coefficients  n np l k0 dx ker_type
+   888     28  out  coefficients  f
+   889     28  in   coefficients  n np l k0 dx ker_type
+   889     28  out  coefficients  f
+   890     28  in   coefficients  n np l k0 dx ker_type
+   890     28  out  coefficients  f
+   891     28  in   coefficients  n np l k0 dx ker_type
+   891     28  out  coefficients  f
+   892     28  in   coefficients  n np l k0 dx ker_type
+   892     28  out  coefficients  f
+   893     28  in   coefficients  n np l k0 dx ker_type
+   893     28  out  coefficients  f
+   894     28  in   coefficients  n np l k0 dx ker_type
+   894     28  out  coefficients  f
+   895     28  in   coefficients  n np l k0 dx ker_type
+   895     28  out  coefficients  f
+   896     28  in   coefficients  n np l k0 dx ker_type
+   896     28  out  coefficients  f
+   897     28  in   coefficients  n np l k0 dx ker_type
+   897     28  out  coefficients  f
+   898     28  in   coefficients  n np l k0 dx ker_type
+   898     28  out  coefficients  f
+   899     28  in   coefficients  n np l k0 dx ker_type
+   899     28  out  coefficients  f
+   900     28  in   coefficients  n np l k0 dx ker_type
+   900     28  out  coefficients  f
+   901     28  in   coefficients  n np l k0 dx ker_type
+   901     28  out  coefficients  f
+   902     28  in   coefficients  n np l k0 dx ker_type
+   902     28  out  coefficients  f
+   903     28  in   coefficients  n np l k0 dx ker_type
+   903     28  out  coefficients  f
+   904     28  in   coefficients  n np l k0 dx ker_type
+   904     28  out  coefficients  f
+   905     28  in   coefficients  n np l k0 dx ker_type
+   905     28  out  coefficients  f
+   906     28  in   coefficients  n np l k0 dx ker_type
+   906     28  out  coefficients  f
+   907     28  in   coefficients  n np l k0 dx ker_type
+   907     28  out  coefficients  f
+   908     28  in   coefficients  n np l k0 dx ker_type
+   908     28  out  coefficients  f
+   909     28  in   coefficients  n np l k0 dx ker_type
+   909     28  out  coefficients  f
+   910     28  in   coefficients  n np l k0 dx ker_type
+   910     28  out  coefficients  f
+   911     28  in   coefficients  n np l k0 dx ker_type
+   911     28  out  coefficients  f
+   912     28  in   coefficients  n np l k0 dx ker_type
+   912     28  out  coefficients  f
+   913     28  in   coefficients  n np l k0 dx ker_type
+   913     28  out  coefficients  f
+   914     28  in   coefficients  n np l k0 dx ker_type
+   914     28  out  coefficients  f
+   915     28  in   coefficients  n np l k0 dx ker_type
+   915     28  out  coefficients  f
+   916     28  in   coefficients  n np l k0 dx ker_type
+   916     28  out  coefficients  f
+   917     28  in   coefficients  n np l k0 dx ker_type
+   917     28  out  coefficients  f
+   918     28  in   coefficients  n np l k0 dx ker_type
+   918     28  out  coefficients  f
+   919     28  in   coefficients  n np l k0 dx ker_type
+   919     28  out  coefficients  f
+   920     28  in   coefficients  n np l k0 dx ker_type
+   920     28  out  coefficients  f
+   921     28  in   coefficients  n np l k0 dx ker_type
+   921     28  out  coefficients  f
+   922     28  in   coefficients  n np l k0 dx ker_type
+   922     28  out  coefficients  f
+   923     28  in   coefficients  n np l k0 dx ker_type
+   923     28  out  coefficients  f
+   924     28  in   coefficients  n np l k0 dx ker_type
+   924     28  out  coefficients  f
+   925     28  in   coefficients  n np l k0 dx ker_type
+   925     28  out  coefficients  f
+   926     28  in   coefficients  n np l k0 dx ker_type
+   926     28  out  coefficients  f
+   927     28  in   coefficients  n np l k0 dx ker_type
+   927     28  out  coefficients  f
+   928     28  in   coefficients  n np l k0 dx ker_type
+   928     28  out  coefficients  f
+   929     28  in   coefficients  n np l k0 dx ker_type
+   929     28  out  coefficients  f
+   930     28  in   coefficients  n np l k0 dx ker_type
+   930     28  out  coefficients  f
+   931     28  in   coefficients  n np l k0 dx ker_type
+   931     28  out  coefficients  f
+   932     28  in   coefficients  n np l k0 dx ker_type
+   932     28  out  coefficients  f
+   933     28  in   coefficients  n np l k0 dx ker_type
+   933     28  out  coefficients  f
+   934     28  in   coefficients  n np l k0 dx ker_type
+   934     28  out  coefficients  f
+   935     28  in   coefficients  n np l k0 dx ker_type
+   935     28  out  coefficients  f
+   936     28  in   coefficients  n np l k0 dx ker_type
+   936     28  out  coefficients  f
+   937     28  in   coefficients  n np l k0 dx ker_type
+   937     28  out  coefficients  f
+   938     28  in   coefficients  n np l k0 dx ker_type
+   938     28  out  coefficients  f
+   939     28  in   coefficients  n np l k0 dx ker_type
+   939     28  out  coefficients  f
+   940     28  in   coefficients  n np l k0 dx ker_type
+   940     28  out  coefficients  f
+   941     28  in   coefficients  n np l k0 dx ker_type
+   941     28  out  coefficients  f
+   942     28  in   coefficients  n np l k0 dx ker_type
+   942     28  out  coefficients  f
+   943     28  in   coefficients  n np l k0 dx ker_type
+   943     28  out  coefficients  f
+   944     28  in   coefficients  n np l k0 dx ker_type
+   944     28  out  coefficients  f
+   945     28  in   coefficients  n np l k0 dx ker_type
+   945     28  out  coefficients  f
+   946     28  in   coefficients  n np l k0 dx ker_type
+   946     28  out  coefficients  f
+   947     28  in   coefficients  n np l k0 dx ker_type
+   947     28  out  coefficients  f
+   948     28  in   coefficients  n np l k0 dx ker_type
+   948     28  out  coefficients  f
+   949     28  in   coefficients  n np l k0 dx ker_type
+   949     28  out  coefficients  f
+   950     28  in   coefficients  n np l k0 dx ker_type
+   950     28  out  coefficients  f
+   951     28  in   coefficients  n np l k0 dx ker_type
+   951     28  out  coefficients  f
+   952     28  in   coefficients  n np l k0 dx ker_type
+   952     28  out  coefficients  f
+   953     28  in   coefficients  n np l k0 dx ker_type
+   953     28  out  coefficients  f
+   954     28  in   coefficients  n np l k0 dx ker_type
+   954     28  out  coefficients  f
+   955     28  in   coefficients  n np l k0 dx ker_type
+   955     28  out  coefficients  f
+   956     28  in   coefficients  n np l k0 dx ker_type
+   956     28  out  coefficients  f
+   957     28  in   coefficients  n np l k0 dx ker_type
+   957     28  out  coefficients  f
+   958     28  in   coefficients  n np l k0 dx ker_type
+   958     28  out  coefficients  f
+   959     28  in   coefficients  n np l k0 dx ker_type
+   959     28  out  coefficients  f
+   960     28  in   coefficients  n np l k0 dx ker_type
+   960     28  out  coefficients  f
+   961     28  in   coefficients  n np l k0 dx ker_type
+   961     28  out  coefficients  f
+   962     28  in   coefficients  n np l k0 dx ker_type
+   962     28  out  coefficients  f
+   963     28  in   coefficients  n np l k0 dx ker_type
+   963     28  out  coefficients  f
+   964     28  in   coefficients  n np l k0 dx ker_type
+   964     28  out  coefficients  f
+   965     28  in   coefficients  n np l k0 dx ker_type
+   965     28  out  coefficients  f
+   966     28  in   coefficients  n np l k0 dx ker_type
+   966     28  out  coefficients  f
+   967     28  in   coefficients  n np l k0 dx ker_type
+   967     28  out  coefficients  f
+   968     28  in   coefficients  n np l k0 dx ker_type
+   968     28  out  coefficients  f
+   969     28  in   coefficients  n np l k0 dx ker_type
+   969     28  out  coefficients  f
+   970     28  in   coefficients  n np l k0 dx ker_type
+   970     28  out  coefficients  f
+   971     28  in   coefficients  n np l k0 dx ker_type
+   971     28  out  coefficients  f
+   972     28  in   coefficients  n np l k0 dx ker_type
+   972     28  out  coefficients  f
+   973     28  in   coefficients  n np l k0 dx ker_type
+   973     28  out  coefficients  f
+   974     28  in   coefficients  n np l k0 dx ker_type
+   974     28  out  coefficients  f
+   975     28  in   coefficients  n np l k0 dx ker_type
+   975     28  out  coefficients  f
+   976     28  in   coefficients  n np l k0 dx ker_type
+   976     28  out  coefficients  f
+   977     28  in   coefficients  n np l k0 dx ker_type
+   977     28  out  coefficients  f
+   978     28  in   coefficients  n np l k0 dx ker_type
+   978     28  out  coefficients  f
+   979     28  in   coefficients  n np l k0 dx ker_type
+   979     28  out  coefficients  f
+   980     28  in   coefficients  n np l k0 dx ker_type
+   980     28  out  coefficients  f
+   981     28  in   coefficients  n np l k0 dx ker_type
+   981     28  out  coefficients  f
+   982     28  in   coefficients  n np l k0 dx ker_type
+   982     28  out  coefficients  f
+   983     28  in   coefficients  n np l k0 dx ker_type
+   983     28  out  coefficients  f
+   984     28  in   coefficients  n np l k0 dx ker_type
+   984     28  out  coefficients  f
+   985     28  in   coefficients  n np l k0 dx ker_type
+   985     28  out  coefficients  f
+   986     28  in   coefficients  n np l k0 dx ker_type
+   986     28  out  coefficients  f
+   987     28  in   coefficients  n np l k0 dx ker_type
+   987     28  out  coefficients  f
+   988     28  in   coefficients  n np l k0 dx ker_type
+   988     28  out  coefficients  f
+   989     28  in   coefficients  n np l k0 dx ker_type
+   989     28  out  coefficients  f
+   990     28  in   coefficients  n np l k0 dx ker_type
+   990     28  out  coefficients  f
+   991     28  in   coefficients  n np l k0 dx ker_type
+   991     28  out  coefficients  f
+   992     28  in   coefficients  n np l k0 dx ker_type
+   992     28  out  coefficients  f
+   993     28  in   coefficients  n np l k0 dx ker_type
+   993     28  out  coefficients  f
+   994     28  in   coefficients  n np l k0 dx ker_type
+   994     28  out  coefficients  f
+   995     28  in   coefficients  n np l k0 dx ker_type
+   995     28  out  coefficients  f
+   996     28  in   coefficients  n np l k0 dx ker_type
+   996     28  out  coefficients  f
+   997     28  in   coefficients  n np l k0 dx ker_type
+   997     28  out  coefficients  f
+   998     28  in   coefficients  n np l k0 dx ker_type
+   998     28  out  coefficients  f
+   999     28  in   coefficients  n np l k0 dx ker_type
+   999     28  out  coefficients  f
+  1000     28  in   coefficients  n np l k0 dx ker_type
+  1000     28  out  coefficients  f
+  1001     28  in   coefficients  n np l k0 dx ker_type
+  1001     28  out  coefficients  f
+  1002     28  in   coefficients  n np l k0 dx ker_type
+  1002     28  out  coefficients  f
+  1003     28  in   coefficients  n np l k0 dx ker_type
+  1003     28  out  coefficients  f
+  1004     28  in   coefficients  n np l k0 dx ker_type
+  1004     28  out  coefficients  f
+  1005     28  in   coefficients  n np l k0 dx ker_type
+  1005     28  out  coefficients  f
+  1006     28  in   coefficients  n np l k0 dx ker_type
+  1006     28  out  coefficients  f
+  1007     28  in   coefficients  n np l k0 dx ker_type
+  1007     28  out  coefficients  f
+  1008     28  in   coefficients  n np l k0 dx ker_type
+  1008     28  out  coefficients  f
+  1009     28  in   coefficients  n np l k0 dx ker_type
+  1009     28  out  coefficients  f
+  1010     28  in   coefficients  n np l k0 dx ker_type
+  1010     28  out  coefficients  f
+  1011     28  in   coefficients  n np l k0 dx ker_type
+  1011     28  out  coefficients  f
+  1012     28  in   coefficients  n np l k0 dx ker_type
+  1012     28  out  coefficients  f
+  1013     28  in   coefficients  n np l k0 dx ker_type
+  1013     28  out  coefficients  f
+  1014     28  in   coefficients  n np l k0 dx ker_type
+  1014     28  out  coefficients  f
+  1015     28  in   coefficients  n np l k0 dx ker_type
+  1015     28  out  coefficients  f
+  1016     28  in   coefficients  n np l k0 dx ker_type
+  1016     28  out  coefficients  f
+  1017     28  in   coefficients  n np l k0 dx ker_type
+  1017     28  out  coefficients  f
+  1018     28  in   coefficients  n np l k0 dx ker_type
+  1018     28  out  coefficients  f
+  1019     28  in   coefficients  n np l k0 dx ker_type
+  1019     28  out  coefficients  f
+  1020     28  in   coefficients  n np l k0 dx ker_type
+  1020     28  out  coefficients  f
+  1021     28  in   coefficients  n np l k0 dx ker_type
+  1021     28  out  coefficients  f
+  1022     28  in   coefficients  n np l k0 dx ker_type
+  1022     28  out  coefficients  f
+  1023     28  in   coefficients  n np l k0 dx ker_type
+  1023     28  out  coefficients  f
+  1024     28  in   coefficients  n np l k0 dx ker_type
+  1024     28  out  coefficients  f
+  1025     28  in   coefficients  n np l k0 dx ker_type
+  1025     28  out  coefficients  f
+  1026     28  in   coefficients  n np l k0 dx ker_type
+  1026     28  out  coefficients  f
+  1027     28  in   coefficients  n np l k0 dx ker_type
+  1027     28  out  coefficients  f
+  1028     28  in   coefficients  n np l k0 dx ker_type
+  1028     28  out  coefficients  f
+  1029     28  in   coefficients  n np l k0 dx ker_type
+  1029     28  out  coefficients  f
+  1030     28  in   coefficients  n np l k0 dx ker_type
+  1030     28  out  coefficients  f
+  1031     28  in   coefficients  n np l k0 dx ker_type
+  1031     28  out  coefficients  f
+  1032     28  in   coefficients  n np l k0 dx ker_type
+  1032     28  out  coefficients  f
+  1033     28  in   coefficients  n np l k0 dx ker_type
+  1033     28  out  coefficients  f
+  1034     28  in   coefficients  n np l k0 dx ker_type
+  1034     28  out  coefficients  f
+  1035     28  in   coefficients  n np l k0 dx ker_type
+  1035     28  out  coefficients  f
+  1036     28  in   coefficients  n np l k0 dx ker_type
+  1036     28  out  coefficients  f
+  1037     28  in   coefficients  n np l k0 dx ker_type
+  1037     28  out  coefficients  f
+  1038     28  in   coefficients  n np l k0 dx ker_type
+  1038     28  out  coefficients  f
+  1039     28  in   coefficients  n np l k0 dx ker_type
+  1039     28  out  coefficients  f
+  1040     28  in   coefficients  n np l k0 dx ker_type
+  1040     28  out  coefficients  f
+  1041     28  in   coefficients  n np l k0 dx ker_type
+  1041     28  out  coefficients  f
+  1042     28  in   coefficients  n np l k0 dx ker_type
+  1042     28  out  coefficients  f
+  1043     28  in   coefficients  n np l k0 dx ker_type
+  1043     28  out  coefficients  f
+  1044     28  in   coefficients  n np l k0 dx ker_type
+  1044     28  out  coefficients  f
+  1045     28  in   coefficients  n np l k0 dx ker_type
+  1045     28  out  coefficients  f
+  1046     28  in   coefficients  n np l k0 dx ker_type
+  1046     28  out  coefficients  f
+  1047     28  in   coefficients  n np l k0 dx ker_type
+  1047     28  out  coefficients  f
+  1048     28  in   coefficients  n np l k0 dx ker_type
+  1048     28  out  coefficients  f
+  1049     28  in   coefficients  n np l k0 dx ker_type
+  1049     28  out  coefficients  f
+  1050     28  in   coefficients  n np l k0 dx ker_type
+  1050     28  out  coefficients  f
+  1051     28  in   coefficients  n np l k0 dx ker_type
+  1051     28  out  coefficients  f
+  1052     28  in   coefficients  n np l k0 dx ker_type
+  1052     28  out  coefficients  f
+  1053     28  in   coefficients  n np l k0 dx ker_type
+  1053     28  out  coefficients  f
+  1054     28  in   coefficients  n np l k0 dx ker_type
+  1054     28  out  coefficients  f
+  1055     28  in   coefficients  n np l k0 dx ker_type
+  1055     28  out  coefficients  f
+  1056     28  in   coefficients  n np l k0 dx ker_type
+  1056     28  out  coefficients  f
+  1057     28  in   coefficients  n np l k0 dx ker_type
+  1057     28  out  coefficients  f
+  1058     28  in   coefficients  n np l k0 dx ker_type
+  1058     28  out  coefficients  f
+  1059     28  in   coefficients  n np l k0 dx ker_type
+  1059     28  out  coefficients  f
+  1060     28  in   coefficients  n np l k0 dx ker_type
+  1060     28  out  coefficients  f
+  1061     28  in   coefficients  n np l k0 dx ker_type
+  1061     28  out  coefficients  f
+  1062     28  in   coefficients  n np l k0 dx ker_type
+  1062     28  out  coefficients  f
+  1063     28  in   coefficients  n np l k0 dx ker_type
+  1063     28  out  coefficients  f
+  1064     28  in   coefficients  n np l k0 dx ker_type
+  1064     28  out  coefficients  f
+  1065     28  in   coefficients  n np l k0 dx ker_type
+  1065     28  out  coefficients  f
+  1066     28  in   coefficients  n np l k0 dx ker_type
+  1066     28  out  coefficients  f
+  1067     28  in   coefficients  n np l k0 dx ker_type
+  1067     28  out  coefficients  f
+  1068     28  in   coefficients  n np l k0 dx ker_type
+  1068     28  out  coefficients  f
+  1069     28  in   coefficients  n np l k0 dx ker_type
+  1069     28  out  coefficients  f
+  1070     28  in   coefficients  n np l k0 dx ker_type
+  1070     28  out  coefficients  f
+  1071     28  in   coefficients  n np l k0 dx ker_type
+  1071     28  out  coefficients  f
+  1072     28  in   coefficients  n np l k0 dx ker_type
+  1072     28  out  coefficients  f
+  1073     28  in   coefficients  n np l k0 dx ker_type
+  1073     28  out  coefficients  f
+  1074     28  in   coefficients  n np l k0 dx ker_type
+  1074     28  out  coefficients  f
+  1075     28  in   coefficients  n np l k0 dx ker_type
+  1075     28  out  coefficients  f
+  1076     28  in   coefficients  n np l k0 dx ker_type
+  1076     28  out  coefficients  f
+  1077     28  in   coefficients  n np l k0 dx ker_type
+  1077     28  out  coefficients  f
+  1078     28  in   coefficients  n np l k0 dx ker_type
+  1078     28  out  coefficients  f
+  1079     28  in   coefficients  n np l k0 dx ker_type
+  1079     28  out  coefficients  f
+  1080     28  in   coefficients  n np l k0 dx ker_type
+  1080     28  out  coefficients  f
+  1081     28  in   coefficients  n np l k0 dx ker_type
+  1081     28  out  coefficients  f
+  1082     28  in   coefficients  n np l k0 dx ker_type
+  1082     28  out  coefficients  f
+  1083     28  in   coefficients  n np l k0 dx ker_type
+  1083     28  out  coefficients  f
+  1084     28  in   coefficients  n np l k0 dx ker_type
+  1084     28  out  coefficients  f
+  1085     28  in   coefficients  n np l k0 dx ker_type
+  1085     28  out  coefficients  f
+  1086     28  in   coefficients  n np l k0 dx ker_type
+  1086     28  out  coefficients  f
+  1087     28  in   coefficients  n np l k0 dx ker_type
+  1087     28  out  coefficients  f
+  1088     28  in   coefficients  n np l k0 dx ker_type
+  1088     28  out  coefficients  f
+  1089     28  in   coefficients  n np l k0 dx ker_type
+  1089     28  out  coefficients  f
+  1090     28  in   coefficients  n np l k0 dx ker_type
+  1090     28  out  coefficients  f
+  1091     28  in   coefficients  n np l k0 dx ker_type
+  1091     28  out  coefficients  f
+  1092     28  in   coefficients  n np l k0 dx ker_type
+  1092     28  out  coefficients  f
+  1093     28  in   coefficients  n np l k0 dx ker_type
+  1093     28  out  coefficients  f
+  1094     28  in   coefficients  n np l k0 dx ker_type
+  1094     28  out  coefficients  f
+  1095     28  in   coefficients  n np l k0 dx ker_type
+  1095     28  out  coefficients  f
+  1096     28  in   coefficients  n np l k0 dx ker_type
+  1096     28  out  coefficients  f
+  1097     28  in   coefficients  n np l k0 dx ker_type
+  1097     28  out  coefficients  f
+  1098     28  in   coefficients  n np l k0 dx ker_type
+  1098     28  out  coefficients  f
+  1099     28  in   coefficients  n np l k0 dx ker_type
+  1099     28  out  coefficients  f
+  1100     28  in   coefficients  n np l k0 dx ker_type
+  1100     28  out  coefficients  f
+  1101     28  in   coefficients  n np l k0 dx ker_type
+  1101     28  out  coefficients  f
+  1102     28  in   coefficients  n np l k0 dx ker_type
+  1102     28  out  coefficients  f
+  1103     28  in   coefficients  n np l k0 dx ker_type
+  1103     28  out  coefficients  f
+  1104     28  in   coefficients  n np l k0 dx ker_type
+  1104     28  out  coefficients  f
+  1105     28  in   coefficients  n np l k0 dx ker_type
+  1105     28  out  coefficients  f
+  1106     28  in   coefficients  n np l k0 dx ker_type
+  1106     28  out  coefficients  f
+  1107     28  in   coefficients  n np l k0 dx ker_type
+  1107     28  out  coefficients  f
+  1108     28  in   coefficients  n np l k0 dx ker_type
+  1108     28  out  coefficients  f
+  1109     28  in   coefficients  n np l k0 dx ker_type
+  1109     28  out  coefficients  f
+  1110     28  in   coefficients  n np l k0 dx ker_type
+  1110     28  out  coefficients  f
+  1111     28  in   coefficients  n np l k0 dx ker_type
+  1111     28  out  coefficients  f
+  1112     28  in   coefficients  n np l k0 dx ker_type
+  1112     28  out  coefficients  f
+  1113     28  in   coefficients  n np l k0 dx ker_type
+  1113     28  out  coefficients  f
+  1114     28  in   coefficients  n np l k0 dx ker_type
+  1114     28  out  coefficients  f
+  1115     28  in   coefficients  n np l k0 dx ker_type
+  1115     28  out  coefficients  f
+  1116     28  in   coefficients  n np l k0 dx ker_type
+  1116     28  out  coefficients  f
+  1117     28  in   coefficients  n np l k0 dx ker_type
+  1117     28  out  coefficients  f
+  1118     28  in   coefficients  n np l k0 dx ker_type
+  1118     28  out  coefficients  f
+  1119     28  in   coefficients  n np l k0 dx ker_type
+  1119     28  out  coefficients  f
+  1120     28  in   coefficients  n np l k0 dx ker_type
+  1120     28  out  coefficients  f
+  1121     28  in   coefficients  n np l k0 dx ker_type
+  1121     28  out  coefficients  f
+  1122     28  in   coefficients  n np l k0 dx ker_type
+  1122     28  out  coefficients  f
+  1123     28  in   coefficients  n np l k0 dx ker_type
+  1123     28  out  coefficients  f
+  1124     28  in   coefficients  n np l k0 dx ker_type
+  1124     28  out  coefficients  f
+  1125     28  in   coefficients  n np l k0 dx ker_type
+  1125     28  out  coefficients  f
+  1126     28  in   coefficients  n np l k0 dx ker_type
+  1126     28  out  coefficients  f
+  1127     28  in   coefficients  n np l k0 dx ker_type
+  1127     28  out  coefficients  f
+  1128     28  in   coefficients  n np l k0 dx ker_type
+  1128     28  out  coefficients  f
+  1129     28  in   coefficients  n np l k0 dx ker_type
+  1129     28  out  coefficients  f
+  1130     28  in   coefficients  n np l k0 dx ker_type
+  1130     28  out  coefficients  f
+  1131     28  in   coefficients  n np l k0 dx ker_type
+  1131     28  out  coefficients  f
+  1132     28  in   coefficients  n np l k0 dx ker_type
+  1132     28  out  coefficients  f
+  1133     28  in   coefficients  n np l k0 dx ker_type
+  1133     28  out  coefficients  f
+  1134     28  in   coefficients  n np l k0 dx ker_type
+  1134     28  out  coefficients  f
+  1135     28  in   coefficients  n np l k0 dx ker_type
+  1135     28  out  coefficients  f
+  1136     28  in   coefficients  n np l k0 dx ker_type
+  1136     28  out  coefficients  f
+  1137     28  in   coefficients  n np l k0 dx ker_type
+  1137     28  out  coefficients  f
+  1138     28  in   coefficients  n np l k0 dx ker_type
+  1138     28  out  coefficients  f
+  1139     28  in   coefficients  n np l k0 dx ker_type
+  1139     28  out  coefficients  f
+  1140     28  in   coefficients  n np l k0 dx ker_type
+  1140     28  out  coefficients  f
+  1141     28  in   coefficients  n np l k0 dx ker_type
+  1141     28  out  coefficients  f
+  1142     28  in   coefficients  n np l k0 dx ker_type
+  1142     28  out  coefficients  f
+  1143     28  in   coefficients  n np l k0 dx ker_type
+  1143     28  out  coefficients  f
+  1144     28  in   coefficients  n np l k0 dx ker_type
+  1144     28  out  coefficients  f
+    28      7  out  surface_surface_coeff  I1_co I2_co I3_co I4_co
+  1145      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1145      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1146      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1146      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1147      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1147      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1148      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1148      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1149      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1149      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1150      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1150      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1151      7  in   gperiodic_coeff_nop_linJVIE  cube
+  1151      7  out  gperiodic_coeff_nop_linJVIE  Gp
+  1152      7  in   fft_operator  A
+  1152      7  out  fft_operator  fA
+     7      0  out  lse_generate_circulant_tensor  fN_all st_sparse_precon
+  1153      0  in   lse_assign_exc_grnd_nodes  idxS sigma_e all_panels_ids port_no pnt_lft pnt_rght pnt_well_cond
+  1153      0  out  lse_assign_exc_grnd_nodes  nodeid_4_grnd nodeid_4_injectcurr
+  1154      0  in   EMconstants  freq
+  1154      0  out  EMconstants  mu co eo eta omega lambda ko omega_mu
+  1155      0  in   lse_sparse_precon_prepare  dx z_real z_imag idxS st_sparse_precon nodeid_4_grnd nodeid_4_injectcurr Ae global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1155      0  out  lse_sparse_precon_prepare  global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1156      0  in   pgmres  A b restart tol maxit L1 (missing: L2 R1 R2 x0)
+  1157   1156  in   iterchk  A
+  1158   1157  in   fcnchk_octave  x (missing: n)
+  1158   1157  out  fcnchk_octave  f msg
+  1157   1156  out  iterchk  atype afun afcnstr
+  1159   1156  in   iterchk  A
+  1160   1159  in   fcnchk_octave  x (missing: n)
+  1160   1159  out  fcnchk_octave  f msg
+  1159   1156  out  iterchk  atype afun afcnstr
+  1161   1156  in   iterapp  op afun atype afcnstr x varargin
+  1162   1161  in   lse_sparse_precon_multiply  JOut_full_in Ae nodeid_4_grnd nodeid_4_injectcurr prectol global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1162   1161  out  lse_sparse_precon_multiply  JOut_full_out global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1161   1156  out  iterapp  y
+  1163   1156  in   iterapp  op afun atype afcnstr x varargin
+  1164   1163  in   lse_sparse_precon_multiply  JOut_full_in Ae nodeid_4_grnd nodeid_4_injectcurr prectol global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1164   1163  out  lse_sparse_precon_multiply  JOut_full_out global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1163   1156  out  iterapp  y
+  1165   1156  in   pgmres_iter  A x r m L1 L2 R1 R2 tol
+  1166   1165  in   iterchk  A
+  1167   1166  in   fcnchk_octave  x (missing: n)
+  1167   1166  out  fcnchk_octave  f msg
+  1166   1165  out  iterchk  atype afun afcnstr
+  1168   1165  in   iterchk  A
+  1169   1168  in   fcnchk_octave  x (missing: n)
+  1169   1168  out  fcnchk_octave  f msg
+  1168   1165  out  iterchk  atype afun afcnstr
+  1170   1165  in   iterapp  op afun atype afcnstr x varargin
+  1171   1170  in   lse_matvect_mult  JIn0 fN_all Ae z_real z_imag dx idx nodeid_4_grnd nodeid_4_injectcurr global_fl_precon_type
+  1171   1170  out  lse_matvect_mult  JOut_full global_fl_precon_type
+  1170   1165  out  iterapp  y
+  1172   1165  in   iterapp  op afun atype afcnstr x varargin
+  1173   1172  in   lse_sparse_precon_multiply  JOut_full_in Ae nodeid_4_grnd nodeid_4_injectcurr prectol global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1173   1172  out  lse_sparse_precon_multiply  JOut_full_out global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1172   1165  out  iterapp  y
+  1174   1165  in   iterapp  op afun atype afcnstr x varargin
+  1175   1174  in   lse_matvect_mult  JIn0 fN_all Ae z_real z_imag dx idx nodeid_4_grnd nodeid_4_injectcurr global_fl_precon_type
+  1175   1174  out  lse_matvect_mult  JOut_full global_fl_precon_type
+  1174   1165  out  iterapp  y
+  1176   1165  in   iterapp  op afun atype afcnstr x varargin
+  1177   1176  in   lse_sparse_precon_multiply  JOut_full_in Ae nodeid_4_grnd nodeid_4_injectcurr prectol global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1177   1176  out  lse_sparse_precon_multiply  JOut_full_out global_A_inv global_LL global_UU global_PP global_QQ global_RR global_Sch_sparse global_slct_decomp_sch global_fl_cholmod global_A_noninv global_W global_fPSchur global_precond global_fl_precon_type
+  1176   1165  out  iterapp  y
+  1165   1156  out  pgmres_iter  x r k resvec
+  1178   1156  in   iterapp  op afun atype afcnstr x varargin
+  1179   1178  in   lse_matvect_mult  JIn0 fN_all Ae z_real z_imag dx idx nodeid_4_grnd nodeid_4_injectcurr global_fl_precon_type
+  1179   1178  out  lse_matvect_mult  JOut_full global_fl_precon_type
+  1178   1156  out  iterapp  y
+  1156      0  out  pgmres  x flag relres iter resvec

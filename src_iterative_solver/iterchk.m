@@ -15,6 +15,7 @@ function [atype,afun,afcnstr] = iterchk(A)
 
 % if running under Octave, use the fcnchk_octave() alternative version
 trace_call('iterchk');
+trace_io('in', 'iterchk');
 if(exist ('OCTAVE_VERSION', 'builtin') > 0)
    [afun,afunmsg] = fcnchk_octave(A); 
 else
@@ -46,3 +47,4 @@ else
    error('MATLAB:iterchk:InvalidInput',...
          'Argument must be a floating point matrix or a function handle.');
 end
+trace_io('out', 'iterchk');

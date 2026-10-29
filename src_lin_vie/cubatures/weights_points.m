@@ -22,6 +22,7 @@ function [W,X,Y,Z,Xp,Yp,Zp] = weights_points(N,dim)
 
 %% Gauss-Legendre
 trace_call('weights_points');
+trace_io('in', 'weights_points');
 [ w1d , x1d ] = gauss_1d(N);
 % points
 x1d = transpose(x1d);
@@ -98,4 +99,5 @@ elseif dim == 6
 end
     
     
+trace_io('out', 'weights_points');
 end

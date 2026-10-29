@@ -36,6 +36,18 @@ end
 filenum = input('Open file number: ');
 fileinname = inputfilelist(filenum).name;
 
+% save the input/output data of every traced function (see trace_io.m) into
+% Results/io/<input file>/: max number of calls saved per function
+% (0 = off, Inf = all). Can be set with the TRACE_IO environment variable too.
+% Keep it off for big models: e.g. the tensor fN_all is saved at each GMRES step.
+trace_io_maxcalls = 0;
+if ~isempty(getenv('TRACE_IO'))
+    trace_io_maxcalls = str2double(getenv('TRACE_IO'));
+end
+if (trace_io_maxcalls > 0)
+    trace_io('-start', ['Results', filesep, 'io', filesep, fileinname], trace_io_maxcalls);
+end
+
 er = 0;  % epsilon_r of conductors
 inner_it = 100; outer_it = 10; tol=1e-12; % iterative solver inputs
 prectol = 1e-1; % tolerance used in Schur GMRES inversion by 'schur_gmres' preconditioner
@@ -459,3 +471,4 @@ end
 
 disp(['Saving list of called functions'])
 trace_call('-save', ['Results', filesep, fileinname, '-', 'call_trace.txt']);
+trace_io('-stop');

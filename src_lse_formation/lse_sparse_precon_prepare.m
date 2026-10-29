@@ -1,11 +1,12 @@
 function lse_sparse_precon_prepare(dx,z_real,z_imag,idxS,st_sparse_precon,nodeid_4_grnd,nodeid_4_injectcurr,Ae)
 trace_call('lse_sparse_precon_prepare');
+trace_io('in', 'lse_sparse_precon_prepare');
 global A_inv LL UU PP QQ RR Sch_sparse slct_decomp_sch fl_cholmod A_noninv W fPSchur precond
 global fl_precon_type
 
 if (strcmp(fl_precon_type, 'no_precond') == 1)
     disp(['Not using any preconditioner'])
-    return
+    trace_io('out', 'lse_sparse_precon_prepare'); return
 end
     
     
@@ -457,3 +458,4 @@ end
 
 Time_Assembly = toc(tic_Assembly);
 disp(['Time to prepare sparse precon ::: ',num2str(Time_Assembly)])
+trace_io('out', 'lse_sparse_precon_prepare');

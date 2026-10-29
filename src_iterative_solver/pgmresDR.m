@@ -74,9 +74,10 @@ function [x,flag,relres,iter,resvec] = pgmresDR(A,b,restart,tol,maxit,ritz,L1,L2
 
 % Initialize variables.
 trace_call('pgmresDR');
+trace_io('in', 'pgmresDR');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
-   return
+   trace_io('out', 'pgmresDR'); return
 end
 if(nargin < 3 || isempty(restart))
    restart = 50;
@@ -281,3 +282,4 @@ else
     flag = 1;
 end
 
+trace_io('out', 'pgmresDR');

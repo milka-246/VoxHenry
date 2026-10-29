@@ -1,6 +1,7 @@
 function [nodeid_4_grnd, nodeid_4_injectcurr]=lse_assign_exc_grnd_nodes(idxS, sigma_e, all_panels_ids, port_no, pnt_lft, pnt_rght, pnt_well_cond)
 
 trace_call('lse_assign_exc_grnd_nodes');
+trace_io('in', 'lse_assign_exc_grnd_nodes');
 nodeid_4_injectcurr = [];
 nodeid_4_grnd = [];
 
@@ -94,3 +95,4 @@ if (isempty(pnt_well_cond) == 0)
         end
     end
 end
+trace_io('out', 'lse_assign_exc_grnd_nodes');

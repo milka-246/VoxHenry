@@ -8,6 +8,7 @@ function [X,Y,Z,Xp,Yp,Zp] = points_const_4D(A,B,C,D,r_m,r_n,dx,n,np)
 % A,B,C,D: 4D Clenshaw - Curtis or Gauss-Legendre points
 
 trace_call('points_const_4D');
+trace_io('in', 'points_const_4D');
 plane   = find(n ~=0);
 plane_p = find(np~=0);
 N = length(A);
@@ -117,6 +118,7 @@ if plane == 3 && plane_p == 3
     Zp = r_n(3) * ones(N,1);
 end
 
+trace_io('out', 'points_const_4D');
 end
 
 

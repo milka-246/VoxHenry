@@ -1,6 +1,7 @@
 function [JOut_full_out]=lse_sparse_precon_multiply(JOut_full_in,Ae,nodeid_4_grnd,nodeid_4_injectcurr,prectol)
 
 trace_call('lse_sparse_precon_multiply');
+trace_io('in', 'lse_sparse_precon_multiply');
 global A_inv LL UU PP QQ RR Sch_sparse slct_decomp_sch fl_cholmod A_noninv W fPSchur precond
 global fl_precon_type
 
@@ -10,7 +11,7 @@ tic
 
 if (strcmp(fl_precon_type, 'no_precond') == 1)
     JOut_full_out = JOut_full_in;
-    return
+    trace_io('out', 'lse_sparse_precon_multiply'); return
 end
 
 % ---------------------------------------------------------------------
@@ -369,3 +370,4 @@ if(fl_profile == 1); disp(['Time for matvect - sparse preconditioner part::: ',n
 
 % moving the printing of dots to the 'lse_matvect_mult.m' function
 %fprintf ('.') ;
+trace_io('out', 'lse_sparse_precon_multiply');

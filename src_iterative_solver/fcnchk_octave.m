@@ -2,6 +2,7 @@
 % Reference: http://octave.1599824.n4.nabble.com/rootfinding-newtzero-td4631423.html
 function [f,msg]=fcnchk_octave(x, n)
     trace_call('fcnchk_octave');
+    trace_io('in', 'fcnchk_octave');
     f = x;
     % 'msg' contains any error message from fcnchk
     % so if 'x' is actually a matrix, let's put it in a message
@@ -14,4 +15,5 @@ function [f,msg]=fcnchk_octave(x, n)
       msg = msg(zeros(0,1));
     end
 
+    trace_io('out', 'fcnchk_octave');
 end

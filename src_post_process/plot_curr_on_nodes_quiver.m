@@ -1,6 +1,7 @@
 function plot_curr_on_nodes_quiver(slct_plane,slct_cut,nodes_w_currs_x_aligned,nodes_w_currs_y_aligned,nodes_w_currs_z_aligned)
 
 trace_call('plot_curr_on_nodes_quiver');
+trace_io('in', 'plot_curr_on_nodes_quiver');
 fl_slct_part=1; %1-real,2-imag,3-abs
 
 if (fl_slct_part == 1) % real part of data for plotting
@@ -181,3 +182,4 @@ q.Color = 'red';
 q.MaxHeadSize = 5.0;
 q.AutoScale = 'on';
 q.AutoScaleFactor=5.0;
+trace_io('out', 'plot_curr_on_nodes_quiver');

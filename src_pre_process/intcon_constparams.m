@@ -35,9 +35,10 @@ function [idx,epsilon_r,sigma_e,lambdaL,grid_intcon] = intcon_constparams(r,Res,
 % -------------------------------------------------------------------------
 
 trace_call('intcon_constparams');
+trace_io('in', 'intcon_constparams');
 if(nargin < 4 )
     fprintf(1, '\n ERROR: not enough arguments\n');
-    return
+    trace_io('out', 'intcon_constparams'); return
 end
 if(nargin < 5 || isempty(e_r))
     e_r = 1;
@@ -154,3 +155,4 @@ if (fl_plot_intcons == 1)
 end
 
 
+trace_io('out', 'intcon_constparams');

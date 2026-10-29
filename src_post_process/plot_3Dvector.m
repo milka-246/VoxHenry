@@ -35,6 +35,7 @@ function [figidx,fighandle] = plot_3Dvector(vec,r,xcut,ycut,zcut,figidx,scale,na
 % -------------------------------------------------------------------------
 
 trace_call('plot_3Dvector');
+trace_io('in', 'plot_3Dvector');
 if (nargin < 6) || isempty(figidx)
     figidx = 0;
 end
@@ -126,3 +127,4 @@ set(gca, 'FontSize', 18);
 
 fighandle = gcf;
 
+trace_io('out', 'plot_3Dvector');

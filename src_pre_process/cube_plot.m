@@ -27,6 +27,7 @@ function cube_plot(origin,X,Y,Z,color)
 % Define the vertexes of the unit cubic
  
 trace_call('cube_plot');
+trace_io('in', 'cube_plot');
 ver = [1 1 0;
     0 1 0;
     0 1 1;
@@ -48,5 +49,6 @@ cube = [ver(:,1)*X+origin(1),ver(:,2)*Y+origin(2),ver(:,3)*Z+origin(3)];
 %patch('Faces',fac,'Vertices',cube,'FaceColor',color);
 patch('Faces',fac,'Vertices',cube,'EdgeColor','blue','FaceColor','none');
 
+trace_io('out', 'cube_plot');
 end
 % ------------------------------Code Ends Here-------------------------------- %

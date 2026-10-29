@@ -2,6 +2,7 @@ function [all_panel_locs] = lse_find_node_locations(num_nonair_cube, grid_intcon
 % find the position in space of the six nodes of each non-air voxel 
 
 trace_call('lse_find_node_locations');
+trace_io('in', 'lse_find_node_locations');
 fl_profile = 0;
 
 
@@ -281,3 +282,4 @@ if(fl_profile == 1); disp(['Time for visualizing panels and currents ::: ', num2
 
 
 
+trace_io('out', 'lse_find_node_locations');

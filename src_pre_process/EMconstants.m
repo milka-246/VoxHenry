@@ -11,6 +11,7 @@
 % _________________________________________________________________________
 
 trace_call('EMconstants');
+trace_io('in', 'EMconstants', {'freq'});
 mu = 4*pi*1e-7;
 co = 299792458;
 eo = 1/co^2/mu;
@@ -22,3 +23,4 @@ omega = 2*pi*freq;
 lambda = co/freq;
 ko = 2*pi/lambda;
 omega_mu = omega*mu;
+trace_io('out', 'EMconstants', {'mu', 'co', 'eo', 'eta', 'omega', 'lambda', 'ko', 'omega_mu'});

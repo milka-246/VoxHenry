@@ -1,6 +1,7 @@
 function [nodes_w_currs_x_aligned,nodes_w_currs_y_aligned,nodes_w_currs_z_aligned]=post_obtain_currs_on_nodes(x,Ae_only_leaving,Ae_only_entering_bndry,r,Mc,dx)
 
 trace_call('post_obtain_currs_on_nodes');
+trace_io('in', 'post_obtain_currs_on_nodes');
 fl_cpu_profile=0;
 num_curr=size(Ae_only_leaving,2);
 % 1) Obtain currents on the nodes
@@ -195,3 +196,4 @@ nodes_w_currs_z_aligned([length(z_aligned_nodes_exit)+1:tot_num_z_nodes],:) = ..
 
 if (fl_cpu_profile==1); disp(['Time for obtaining nodes_w_currs_z_aligned ::: ',num2str(toc)]); end;
 
+trace_io('out', 'post_obtain_currs_on_nodes');

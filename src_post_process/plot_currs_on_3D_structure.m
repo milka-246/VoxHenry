@@ -1,6 +1,7 @@
 function plot_currs_on_3D_structure(x,Ae_only_leaving,r,Mc,dx)
 
 trace_call('plot_currs_on_3D_structure');
+trace_io('in', 'plot_currs_on_3D_structure');
 interp_on=0; % use interpolated currents by mapping from centers to vertices
 log_on = 0 ;% computed dB after normalizing with maximum current
 dB_down = 50;
@@ -354,3 +355,4 @@ end
 set(FigHandle, 'Visible', 'on');
 %refresh;
 drawnow;
+trace_io('out', 'plot_currs_on_3D_structure');

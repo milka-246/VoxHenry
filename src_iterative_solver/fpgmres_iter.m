@@ -26,6 +26,7 @@
 function [x,r,k,resvec] = fpgmres_iter(A,x,r,m,R1,R2,tol)
 
 trace_call('fpgmres_iter');
+trace_io('in', 'fpgmres_iter');
 if(isempty(R1))
    existR1 = 0;
 else
@@ -120,3 +121,4 @@ xupd = Z(:,1:k)*y;
 % apply update x = x + Z(:,1:k) * y;
 x = x + xupd;
 r = V(:,1:k+1) * res;
+trace_io('out', 'fpgmres_iter');

@@ -1,6 +1,7 @@
 function [sigma_e, lambdaL, freq, dx, num_ports, pnt_lft, pnt_rght, pnt_well_cond] = pre_input_file(fileinname)
 
 trace_call('pre_input_file');
+trace_io('in', 'pre_input_file');
 tini = tic;
 
 % constants
@@ -15,7 +16,7 @@ sidetypes = {'-x', '+x', '-y', '+y', '-z', '+z'};
 if fid < 0
     disp(['ERROR opening the input file ', fileinname]);
     disp(['Error is: ', errmsg]);
-    return;
+    trace_io('out', 'pre_input_file'); return;
 end
   
 % init 
@@ -132,3 +133,4 @@ disp(['Time for reading input file::: ' ,num2str(tend)]);
 disp('-----------------------------------------------------')
 
 
+trace_io('out', 'pre_input_file');

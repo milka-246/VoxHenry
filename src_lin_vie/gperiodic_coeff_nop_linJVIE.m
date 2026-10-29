@@ -4,6 +4,7 @@ function [Gp] = gperiodic_coeff_nop_linJVIE(cube)
 % new basis functions
 % L,M,N
 trace_call('gperiodic_coeff_nop_linJVIE');
+trace_io('in', 'gperiodic_coeff_nop_linJVIE');
 if     strcmp(cube, 'L')
     
     Gp   = [ +1.0 -1.0 +1.0 +1.0 +1.0 +1.0 +1.0];
@@ -37,3 +38,4 @@ Gp = Gp';
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             END
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+trace_io('out', 'gperiodic_coeff_nop_linJVIE');

@@ -1,6 +1,7 @@
 function [pnt_found,pnt_id,side] = lse_find_nodeid(all_panel_locs,all_panels_ids,pnt_coor,num_nonair_cube,tola,fl_vis_exc_grnd,dum)
 
 trace_call('lse_find_nodeid');
+trace_io('in', 'lse_find_nodeid');
 pnt_found = 0;
 pnt_id = 0;
 side = 0;
@@ -19,7 +20,7 @@ if ( abs(all_panel_locs(dum,1)-pnt_coor(1)) < tola && ...
         h=text(all_panel_locs(dum,1),all_panel_locs(dum,2),all_panel_locs(dum,3),num2str(all_panels_ids(dum,1)));set(h,'FontSize',24);
     end
     pnt_found=1;
-    return
+    trace_io('out', 'lse_find_nodeid'); return
     
 elseif ( abs(all_panel_locs(dum,4)-pnt_coor(1)) < tola && ...
         abs(all_panel_locs(dum,5)-pnt_coor(2)) < tola && ...
@@ -38,7 +39,7 @@ elseif ( abs(all_panel_locs(dum,4)-pnt_coor(1)) < tola && ...
     
     pnt_found=1;
     if(pnt_found == 1)
-        return
+        trace_io('out', 'lse_find_nodeid'); return
     end
     
     
@@ -57,7 +58,7 @@ elseif ( abs(all_panel_locs(num_nonair_cube+dum,1)-pnt_coor(1)) < tola && ...
         h=text(all_panel_locs(num_nonair_cube+dum,1),all_panel_locs(num_nonair_cube+dum,2),all_panel_locs(num_nonair_cube+dum,3),num2str(all_panels_ids(dum,3)));set(h,'FontSize',24);
     end
     pnt_found=1;
-    return
+    trace_io('out', 'lse_find_nodeid'); return
     
 elseif ( abs(all_panel_locs(num_nonair_cube+dum,4)-pnt_coor(1)) < tola && ...
         abs(all_panel_locs(num_nonair_cube+dum,5)-pnt_coor(2)) < tola && ...
@@ -76,7 +77,7 @@ elseif ( abs(all_panel_locs(num_nonair_cube+dum,4)-pnt_coor(1)) < tola && ...
     
     pnt_found=1;
     if(pnt_found == 1)
-        return
+        trace_io('out', 'lse_find_nodeid'); return
     end
     
 elseif ( abs(all_panel_locs(2*num_nonair_cube+dum,1)-pnt_coor(1)) < tola && ...
@@ -94,7 +95,7 @@ elseif ( abs(all_panel_locs(2*num_nonair_cube+dum,1)-pnt_coor(1)) < tola && ...
         h=text(all_panel_locs(2*num_nonair_cube+dum,1),all_panel_locs(2*num_nonair_cube+dum,2),all_panel_locs(2*num_nonair_cube+dum,3),num2str(all_panels_ids(dum,5)));set(h,'FontSize',24);
     end
     pnt_found=1;
-    return
+    trace_io('out', 'lse_find_nodeid'); return
     
 elseif ( abs(all_panel_locs(2*num_nonair_cube+dum,4)-pnt_coor(1)) < tola && ...
         abs(all_panel_locs(2*num_nonair_cube+dum,5)-pnt_coor(2)) < tola && ...
@@ -113,7 +114,8 @@ elseif ( abs(all_panel_locs(2*num_nonair_cube+dum,4)-pnt_coor(1)) < tola && ...
     
     pnt_found=1;
     if(pnt_found == 1)
-        return
+        trace_io('out', 'lse_find_nodeid'); return
     end
     
 end
+trace_io('out', 'lse_find_nodeid');

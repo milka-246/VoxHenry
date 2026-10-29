@@ -1,6 +1,7 @@
 function plot_curr_on_nodes(slct_plane,slct_cut,dx,nodes_w_currs_x_aligned,nodes_w_currs_y_aligned,nodes_w_currs_z_aligned)
 
 trace_call('plot_curr_on_nodes');
+trace_io('in', 'plot_curr_on_nodes');
 fl_ind_or_phys_len=0; % if 1 axes are physical length, otherwise index of node along that dimension
 tola=1e-12;
 fl_plot_surf_imagesc=2; % 1 for surf, 2 for imagesc
@@ -150,3 +151,4 @@ for comp=1:3 % for each component
     
 end
 
+trace_io('out', 'plot_curr_on_nodes');

@@ -1,6 +1,7 @@
 function [all_panels_ids, num_nodes] = lse_generate_panelIDs(idxS, L, M, N)
 
 trace_call('lse_generate_panelIDs');
+trace_io('in', 'lse_generate_panelIDs');
 fl_profile = 0;
 
 % constants
@@ -175,3 +176,4 @@ num_nodes=num_panel_x+num_panel_y+num_panel_z;
 if(fl_profile == 1); disp(['Time for indexing panels ::: ', num2str(toc)]); end;
 
 
+trace_io('out', 'lse_generate_panelIDs');

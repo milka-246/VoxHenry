@@ -35,9 +35,10 @@ function [r] = generategridfrombbox(res,x,y,z,fl_plot_boxes_w_grid)
 % -------------------------------------------------------------------------
 
 trace_call('generategridfrombbox');
+trace_io('in', 'generategridfrombbox');
 if(nargin < 2 )
    fprintf(1, '\n ERROR: not enough arguments\n');
-   return
+   trace_io('out', 'generategridfrombbox'); return
 end
 if(nargin < 3 || isempty(y))
    y = x;
@@ -122,3 +123,4 @@ if (fl_plot_boxes_w_grid == 1)
     disp(['Time for visualizing the computational domain ::: ',num2str(toc)])
 end
 
+trace_io('out', 'generategridfrombbox');

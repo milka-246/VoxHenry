@@ -10,6 +10,7 @@ function  K = volume_volume_sym(W,X,Y,Z,Xp,Yp,Zp,k0,r_m,r_n,dx,volume_ker,dir)
 
 % Jacobean
 trace_call('volume_volume_sym');
+trace_io('in', 'volume_volume_sym');
 J = (dx/2)^6;
 
 % sampling points for the Green kernel
@@ -119,4 +120,5 @@ else
 end
 
 % end function
+trace_io('out', 'volume_volume_sym');
 end

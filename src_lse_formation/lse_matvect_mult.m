@@ -1,5 +1,6 @@
 function [JOut_full]=lse_matvect_mult(JIn0, fN_all, Ae, z_real, z_imag, dx, idx, nodeid_4_grnd, nodeid_4_injectcurr)
 trace_call('lse_matvect_mult');
+trace_io('in', 'lse_matvect_mult');
 global fl_precon_type
 
 % -------------------------------------------------------------------------
@@ -184,3 +185,4 @@ if(fl_profile == 1); disp(['Time for matvect - Ae matrices part::: ',num2str(toc
 % typing one dot for each iteratative solution multiplication step
 fprintf ('.') ;
 
+trace_io('out', 'lse_matvect_mult');

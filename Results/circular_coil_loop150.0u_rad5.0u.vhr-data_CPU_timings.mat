@@ -1,4 +1,4 @@
-# Created by Octave 9.4.0, Sat Oct 24 15:33:50 2026 MSK <milka@milka-OMEN-by-HP-Laptop-16-c0xxx>
+# Created by Octave 9.4.0, Sat Oct 24 22:37:16 2026 MSK <milka@milka-OMEN-by-HP-Laptop-16-c0xxx>
 # name: num_freq
 # type: scalar
 1
@@ -13,15 +13,15 @@
 # type: matrix
 # rows: 1
 # columns: 2
- 9.6906640529632568 145.44778490066528
+ 9.6709389686584473 148.20208811759949
 
 
 # name: sim_CPU_lse
 # type: matrix
 # ndims: 3
  1 1 3
- 0.46365594863891602
- 2.4532420635223389
- 81.115647077560425
+ 0.43897104263305664
+ 2.3419990539550781
+ 79.016477108001709
 
 

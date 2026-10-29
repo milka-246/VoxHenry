@@ -1,5 +1,6 @@
 % Domain and unknown parameters
 trace_call('pre_define_structure_params');
+trace_io('in', 'pre_define_structure_params', {'sigma_e', 'lambdaL'});
 [L,M,N,~] = size(sigma_e); % domain size
 nD = L*M*N; % number of variables in the system
 % the voxels with non-zero conductivity
@@ -23,5 +24,4 @@ idxS5 = [idxS; nD+idxS; 2*nD+idxS; 3*nD+idxS; 4*nD+idxS]; % for currents
 % however it is used for post-processing visualization (through 'Mc', see VoxHenry_executer.m)
 epsilon_r = ones(size(sigma_e));
 epsilon_r(idxS) = 0.0;
-
-
+trace_io('out', 'pre_define_structure_params', {'L', 'M', 'N', 'nD', 'sigma_e_nonzero', 'idxS', 'idxS5', 'epsilon_r'});
